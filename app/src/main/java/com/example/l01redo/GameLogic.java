@@ -147,16 +147,16 @@ public class GameLogic {
                     getMat()[getROWS()-1][1] = state.EMPTY;
                     getMat()[getROWS()-1][0] = state.SALAD;
                     currSalad = 0;
-                    return;
+
                }
                //else if (btn == findViewById(R.id.main_FAB_right)) {
                else if (direct == direction.RIGHT) {
                     getMat()[getROWS() - 1][1] = state.EMPTY;
                     getMat()[getROWS() - 1][2] = state.SALAD;
                     currSalad = 2;
-                    return;
+
                }
-               return;
+
           }
      }
 
