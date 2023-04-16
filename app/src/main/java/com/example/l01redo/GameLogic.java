@@ -5,8 +5,22 @@ public class GameLogic {
      //variables and finals area, can be changed by prog;
 
      private final int TOTAL_PUKE = 3;
-     private int pukeUsed;
      private int pukeLeft;
+
+     private boolean gameOver = false;
+
+     int currSalad;
+
+     public boolean onionInSalad = false;
+
+     public boolean isGameOver() { // on the next assignment it will be used - if game over - end;
+          return gameOver;
+     }
+
+     public void setGameOver(boolean gameOver) {
+          this.gameOver = gameOver;
+     }
+
      private final int ROWS = 6;
      private final int COLS = 3;
 
@@ -24,12 +38,10 @@ public class GameLogic {
 
 
      //initializing for first time;
-     public GameLogic(state[][] mat, final int TOTAL_PUKE,final int ROWS, final int COLS){
-          pukeUsed = 0;
-          setPukeLeft();
-          setMat(mat,ROWS,COLS);
-          getMat()[getROWS()-1][getCOLS()/2] = state.SALAD; //need to change it if ill
-          // allow even number of cols;
+     public GameLogic(){
+          int currSalad = 1;
+          pukeLeft = TOTAL_PUKE;
+          setMat();
      }
 
 
@@ -39,20 +51,14 @@ public class GameLogic {
           return TOTAL_PUKE;
      }
 
-     public int getPukeUsed() {
-          return pukeUsed;
-     }
-
-     public void setPukeUsed(){ //on the next assignment, if puke used > total = end game
-          this.pukeUsed++;
-     }
-
      public int getPukeLeft() {
           return pukeLeft;
      }
 
      public void setPukeLeft() {
-          this.pukeLeft = this.getTOTAL_PUKE()-this.getPukeUsed();
+          this.pukeLeft--;
+          if(getPukeLeft() > TOTAL_PUKE)
+               setGameOver(true);
      }
 
      public int getROWS() {
@@ -67,37 +73,42 @@ public class GameLogic {
           return mat;
      }
 
-     public void setMat(state[][] mat, int rows, int cols) {
+     public void setMat() {
           mat = new state[ROWS][COLS];
-          for (int i = 0; i < ROWS; i++) {
-               for (int j = 0; j < COLS; j++) {
-                    mat[i][j] = state.EMPTY;
+
+          currSalad = 1; // deafult at start
+
+          for (int rows = 0; rows < getROWS()-1 ; rows++) {
+               for (int cols = 0; cols < getCOLS(); cols++) {
+                    getMat()[rows][cols] = state.EMPTY;
                }
           }
+          getMat()[getROWS()-1][0] = state.EMPTY;
+          getMat()[getROWS()-1][1] = state.SALAD;
+          getMat()[getROWS()-1][2] = state.EMPTY;
+
           this.mat = mat;
      }
 
-
-
      //onions functions
 
-     private void randomOnionAppear(state[][] matrix) {
+     private void randomOnionAppear() {
           int col = (int)(Math.random() * ((getCOLS()-1) + 1));
           getMat()[0][col] = state.ONION;
-     } //should be used on the first time only, and from there only in oneStepOnion;
+     }
 
-     private void oneStepOnion(state[][] matrix){
-          for (int i = getROWS()-2; i >=0 ; i--) {
+     public void oneStepOnion(){
+          for (int i = getROWS()-2; i >= 0 ; i--) {
                for (int j = 0; j < getCOLS(); j++) {
                     if(getMat()[i][j] == state.ONION){
-                         if (i == getROWS()-2){
-                              if(getMat()[getROWS()-1][j] == state.SALAD){
-                                   setPukeUsed();
-                                   setPukeLeft();
-                              }
+                         if((i == getROWS()-2 ) && (getMat()[getROWS()-1][j] == state.SALAD)){
+                              setPukeLeft();
+                              onionInSalad = true;
+                             getMat()[i][j] = state.EMPTY;
+                         }
+                         else if((i == getROWS()-2 ) && (getMat()[getROWS()-1][j] == state.EMPTY)){
                               getMat()[i][j] = state.EMPTY;
                          }
-
                          else{
                               getMat()[i][j] = state.EMPTY;
                               getMat()[i+1][j] = state.ONION;
@@ -105,42 +116,48 @@ public class GameLogic {
                     }
                }
           }
-          randomOnionAppear(matrix);
+          randomOnionAppear();
      }
 
      //salad functions
 
-     private void changeSaladPos(state[][] matrix, direction direct){
-          if(getMat()[getROWS()-1][1] == state.SALAD){ //for the next assignment not necessarily 0,1,2 but changeable
-               if (direct == direction.LEFT){
-                    getMat()[getROWS()-1][0] = state.SALAD;
-                    getMat()[getROWS()-1][1] = state.EMPTY;
-               }
-               else if (direct == direction.RIGHT){
-                    getMat()[getROWS()-1][2] = state.SALAD;
-                    getMat()[getROWS()-1][1] = state.EMPTY;
-               }
-               else
+     public void changeSaladPos(direction direct){
+          //for the next assignment not necessarily 0,1,2 but changeable
+
+          if (currSalad == 0){
+               if (direct == direction.RIGHT){
+                    getMat()[getROWS()-1][0] = state.EMPTY;
+                    getMat()[getROWS()-1][1]=state.SALAD;
+                    currSalad = 1;
                     return;
-          }
-          else if(getMat()[getROWS()-1][0] == state.SALAD){
-               if (direct == direction.RIGHT) {
-                    getMat()[getROWS() - 1][1] = state.SALAD;
-                    getMat()[getROWS() - 1][0] = state.EMPTY;
                }
-               else
-                    return;
-          }
-          else if(getMat()[getROWS()-1][2] == state.SALAD){
-               if (direct == direction.LEFT) {
-                    getMat()[getROWS() - 1][1] = state.SALAD;
-                    getMat()[getROWS() - 1][2] = state.EMPTY;
-               }
-               else
-                    return;
-          }
-          else
                return;
+          }
+          if (currSalad == 2){
+               if (direct == direction.LEFT){
+                    getMat()[getROWS()-1][2] = state.EMPTY;
+                    getMat()[getROWS()-1][1] = state.SALAD;
+                    currSalad = 1;
+                    return;
+               }
+               return;
+          }
+          if (currSalad == 1){
+               if (direct == direction.LEFT){
+                    getMat()[getROWS()-1][1] = state.EMPTY;
+                    getMat()[getROWS()-1][0] = state.SALAD;
+                    currSalad = 0;
+                    return;
+               }
+               //else if (btn == findViewById(R.id.main_FAB_right)) {
+               else if (direct == direction.RIGHT) {
+                    getMat()[getROWS() - 1][1] = state.EMPTY;
+                    getMat()[getROWS() - 1][2] = state.SALAD;
+                    currSalad = 2;
+                    return;
+               }
+               return;
+          }
      }
 
 

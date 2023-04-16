@@ -2,9 +2,14 @@ package com.example.l01redo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.imageview.ShapeableImageView;
@@ -14,13 +19,11 @@ public class MainActivity extends AppCompatActivity {
     ShapeableImageView[][] gridMatrix;
     FloatingActionButton[] fabArr;
     ShapeableImageView[] vomitArr;
-
     ShapeableImageView[] saladArr;
 
-    private final int ROWS = 6;
-    private final int COLS = 3;
+    private GameLogic gameLogic;
 
-    int currSalad = 1; //default in the middle
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +32,36 @@ public class MainActivity extends AppCompatActivity {
 
         findViews();
 
+        gameLogic = new GameLogic();
+        matrixStart();
+        playerDirections();
+        oneStep();
+
     }
-    
+
+    private void showVomit(){
+        if(gameLogic.getPukeLeft() >= gameLogic.getTOTAL_PUKE()){
+            vomitArr[0].setVisibility(View.VISIBLE);
+            vomitArr[1].setVisibility(View.VISIBLE);
+            vomitArr[2].setVisibility(View.VISIBLE);
+        }
+        else if(gameLogic.getPukeLeft() == 2){
+            vomitArr[0].setVisibility(View.VISIBLE);
+            vomitArr[1].setVisibility(View.VISIBLE);
+            vomitArr[2].setVisibility(View.INVISIBLE);
+        }
+        else if(gameLogic.getPukeLeft() == 1){
+            vomitArr[0].setVisibility(View.VISIBLE);
+            vomitArr[1].setVisibility(View.INVISIBLE);
+            vomitArr[2].setVisibility(View.INVISIBLE);
+        }
+        else{
+            vomitArr[0].setVisibility(View.INVISIBLE);
+            vomitArr[1].setVisibility(View.INVISIBLE);
+            vomitArr[2].setVisibility(View.INVISIBLE);
+        }
+
+    }
 
     private void findViews() {
 
@@ -57,95 +88,89 @@ public class MainActivity extends AppCompatActivity {
        };
 
 
+
     }
 
-    public int getROWS() {
-        return ROWS;
-    }
-
-    public int getCOLS() {
-        return COLS;
-    }
 
     public void playerDirections(){
-        for (int i = 0; i < getCOLS(); i++) {
-            if(gridMatrix[getROWS()-1][i].getVisibility() == View.VISIBLE){
-                currSalad = i;
-            }
-            
-        }
 
         for (FloatingActionButton btn: fabArr) {
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (currSalad == 0){
-                        if (btn == findViewById(R.id.main_FAB_right)){
-                            gridMatrix[getROWS()-1][0].setVisibility(View.INVISIBLE);
-                            gridMatrix[getROWS()-1][1].setVisibility(View.VISIBLE);
-                            return;
-                        }
-                        return;
+                    if (btn == findViewById(R.id.main_FAB_right)){
+                        gameLogic.changeSaladPos(GameLogic.direction.RIGHT);
                     }
-                    if (currSalad == 2){
-                        if (btn == findViewById(R.id.main_FAB_left)){
-                            gridMatrix[getROWS()-1][2].setVisibility(View.INVISIBLE);
-                            gridMatrix[getROWS()-1][1].setVisibility(View.VISIBLE);
-                            return;
-                        }
-                        return;
+                    else if (btn == findViewById(R.id.main_FAB_left)){
+                        gameLogic.changeSaladPos(GameLogic.direction.LEFT);
                     }
-                    if (currSalad == 1){
-                        if (btn == findViewById(R.id.main_FAB_left)){
-                            gridMatrix[getROWS()-1][1].setVisibility(View.INVISIBLE);
-                            gridMatrix[getROWS()-1][0].setVisibility(View.VISIBLE);
-                            return;
-                        }
-                        else if (btn == findViewById(R.id.main_FAB_right)) {
-                            gridMatrix[getROWS() - 1][1].setVisibility(View.INVISIBLE);
-                            gridMatrix[getROWS() - 1][2].setVisibility(View.VISIBLE);
-                            return;
-                        }
-                        return;
-                    }
-
+                    refreshUi();
                 }
             });
         }
-
-
-        
-        
     }
 
     public void matrixStart(){
-        for (int rows = 0; rows < getROWS()-1 ; rows++) {
-            for (int cols = 0; cols < getCOLS(); cols++) {
-                gridMatrix[rows][cols].setVisibility(View.INVISIBLE);
-            }
-        }
-        gridMatrix[getROWS()][0].setVisibility(View.INVISIBLE);
-        gridMatrix[getROWS()][1].setVisibility(View.VISIBLE);
-        gridMatrix[getROWS()][2].setVisibility(View.INVISIBLE);
+        gameLogic.setMat();
+        refreshUi();
     }
 
-    public void randomOnionAppear(){
+
+    public void oneStep(){
         Handler h = new Handler();
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
-                int col = (int)(Math.random() * ((getCOLS()-1) + 1));
-                gridMatrix[0][col].setVisibility(View.VISIBLE);
-                h.postDelayed(this,5000);
-
+                gameLogic.oneStepOnion();
+                if(gameLogic.onionInSalad){
+                    viberateAndToast();
+                    gameLogic.onionInSalad = false;
+                }
+                refreshUi();
+                h.postDelayed(this,1000);
             }
         };
         h.post(runnable);
     }
 
 
+    public void refreshUi(){
+        int rows = gameLogic.getROWS();
+        int cols = gameLogic.getCOLS();
 
+        for (int i = 0; i < rows ; i++) {
+            for (int j = 0; j < cols; j++) {
+                if((gameLogic.getMat()[i][j] == GameLogic.state.ONION)||
+                        (gameLogic.getMat()[i][j] == GameLogic.state.SALAD)){
+                    gridMatrix[i][j].setVisibility(View.VISIBLE);
+                } else if (gameLogic.getMat()[i][j] == GameLogic.state.EMPTY) {
+                    gridMatrix[i][j].setVisibility(View.INVISIBLE);
+                }
+                else{
 
+                }
+            }
+        }
 
+        showVomit();
+
+    }
+
+    public void vibrate(){
+        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            v.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
+        }
+        else {
+            v.vibrate(500);
+
+        }
+    }
+
+    private void viberateAndToast(){
+        vibrate();
+        Toast.makeText(getApplicationContext(), "Disgusting.", Toast.LENGTH_SHORT).show();
+    }
 
 }
