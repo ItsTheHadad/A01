@@ -72,15 +72,17 @@ public class MainActivity extends AppCompatActivity {
 
         saladArr = new ShapeableImageView[]{
                 findViewById(R.id.salad0), findViewById(R.id.salad1),
-                findViewById(R.id.salad2)
+                findViewById(R.id.salad2), findViewById(R.id.salad3),  findViewById(R.id.salad4)
         };
 
         gridMatrix = new ShapeableImageView[][]{
-                {findViewById(R.id.onion0_0), findViewById(R.id.onion0_1), findViewById(R.id.onion0_2)},
-                {findViewById(R.id.onion1_0), findViewById(R.id.onion1_1), findViewById(R.id.onion1_2)},
-                {findViewById(R.id.onion2_0), findViewById(R.id.onion2_1), findViewById(R.id.onion2_2)},
-                {findViewById(R.id.onion3_0), findViewById(R.id.onion3_1), findViewById(R.id.onion3_2)},
-                {findViewById(R.id.onion4_0), findViewById(R.id.onion4_1), findViewById(R.id.onion4_2)},
+                {findViewById(R.id.onion0_0), findViewById(R.id.onion0_1), findViewById(R.id.onion0_2), findViewById(R.id.onion0_3), findViewById(R.id.onion0_4)},
+                {findViewById(R.id.onion1_0), findViewById(R.id.onion1_1), findViewById(R.id.onion1_2), findViewById(R.id.onion1_3), findViewById(R.id.onion1_4)},
+                {findViewById(R.id.onion2_0), findViewById(R.id.onion2_1), findViewById(R.id.onion2_2), findViewById(R.id.onion2_3), findViewById(R.id.onion2_4)},
+                {findViewById(R.id.onion3_0), findViewById(R.id.onion3_1), findViewById(R.id.onion3_2), findViewById(R.id.onion3_3), findViewById(R.id.onion3_4)},
+                {findViewById(R.id.onion4_0), findViewById(R.id.onion4_1), findViewById(R.id.onion4_2), findViewById(R.id.onion4_3), findViewById(R.id.onion4_4)},
+                {findViewById(R.id.onion5_0), findViewById(R.id.onion5_1), findViewById(R.id.onion5_2), findViewById(R.id.onion5_3), findViewById(R.id.onion5_4)},
+                {findViewById(R.id.onion6_0), findViewById(R.id.onion6_1), findViewById(R.id.onion6_2), findViewById(R.id.onion6_3), findViewById(R.id.onion6_4)},
                 {findViewById(R.id.salad0), findViewById(R.id.salad1), findViewById(R.id.salad2)}};
 
         fabArr = new FloatingActionButton[]{
@@ -123,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 gameLogic.oneStepOnion();
                 if(gameLogic.onionInSalad){
-                    viberateAndToast();
+                    vibrateAndToast();
                     gameLogic.onionInSalad = false;
                 }
                 refreshUi();
@@ -168,7 +170,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void viberateAndToast(){
+    private void vibrateAndToast(){
         vibrate();
         Toast.makeText(getApplicationContext(), "Disgusting.", Toast.LENGTH_SHORT).show();
     }

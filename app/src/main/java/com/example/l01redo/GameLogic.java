@@ -21,8 +21,8 @@ public class GameLogic {
           this.gameOver = gameOver;
      }
 
-     private final int ROWS = 6;
-     private final int COLS = 3;
+     private final int ROWS = 8;
+     private final int COLS = 5;
 
 
      enum state{
@@ -76,7 +76,7 @@ public class GameLogic {
      public void setMat() {
           mat = new state[ROWS][COLS];
 
-          currSalad = 1; // deafult at start
+          currSalad = 2; // deafult at start
 
           for (int rows = 0; rows < getROWS()-1 ; rows++) {
                for (int cols = 0; cols < getCOLS(); cols++) {
@@ -84,8 +84,10 @@ public class GameLogic {
                }
           }
           getMat()[getROWS()-1][0] = state.EMPTY;
-          getMat()[getROWS()-1][1] = state.SALAD;
-          getMat()[getROWS()-1][2] = state.EMPTY;
+          getMat()[getROWS()-1][1] = state.EMPTY;
+          getMat()[getROWS()-1][2] = state.SALAD;
+          getMat()[getROWS()-1][3] = state.EMPTY;
+          getMat()[getROWS()-1][4] = state.EMPTY;
 
           this.mat = mat;
      }
@@ -122,7 +124,6 @@ public class GameLogic {
      //salad functions
 
      public void changeSaladPos(direction direct){
-          //for the next assignment not necessarily 0,1,2 but changeable
 
           if (currSalad == 0){
                if (direct == direction.RIGHT){
@@ -133,26 +134,62 @@ public class GameLogic {
                }
                return;
           }
-          if (currSalad == 2){
+          if (currSalad == 5){
                if (direct == direction.LEFT){
-                    getMat()[getROWS()-1][2] = state.EMPTY;
-                    getMat()[getROWS()-1][1] = state.SALAD;
+                    getMat()[getROWS()-1][5] = state.EMPTY;
+                    getMat()[getROWS()-1][4] = state.SALAD;
                     currSalad = 1;
                     return;
                }
                return;
           }
-          if (currSalad == 1){
+
+
+          if (currSalad == 2){
                if (direct == direction.LEFT){
-                    getMat()[getROWS()-1][1] = state.EMPTY;
-                    getMat()[getROWS()-1][0] = state.SALAD;
+                    getMat()[getROWS()-1][2] = state.EMPTY;
+                    getMat()[getROWS()-1][1] = state.SALAD;
                     currSalad = 0;
 
                }
                //else if (btn == findViewById(R.id.main_FAB_right)) {
                else if (direct == direction.RIGHT) {
-                    getMat()[getROWS() - 1][1] = state.EMPTY;
-                    getMat()[getROWS() - 1][2] = state.SALAD;
+                    getMat()[getROWS() - 1][2] = state.EMPTY;
+                    getMat()[getROWS() - 1][3] = state.SALAD;
+                    currSalad = 2;
+
+               }
+
+          }
+
+          if (currSalad == 4){
+               if (direct == direction.LEFT){
+                    getMat()[getROWS()-1][4] = state.EMPTY;
+                    getMat()[getROWS()-1][3] = state.SALAD;
+                    currSalad = 0;
+
+               }
+               //else if (btn == findViewById(R.id.main_FAB_right)) {
+               else if (direct == direction.RIGHT) {
+                    getMat()[getROWS() - 1][4] = state.EMPTY;
+                    getMat()[getROWS() - 1][5] = state.SALAD;
+                    currSalad = 2;
+
+               }
+
+          }
+
+          if (currSalad == 3){
+               if (direct == direction.LEFT){
+                    getMat()[getROWS()-1][3] = state.EMPTY;
+                    getMat()[getROWS()-1][2] = state.SALAD;
+                    currSalad = 0;
+
+               }
+               //else if (btn == findViewById(R.id.main_FAB_right)) {
+               else if (direct == direction.RIGHT) {
+                    getMat()[getROWS() - 1][3] = state.EMPTY;
+                    getMat()[getROWS() - 1][4] = state.SALAD;
                     currSalad = 2;
 
                }
