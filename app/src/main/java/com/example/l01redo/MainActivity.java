@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                 {findViewById(R.id.onion4_0), findViewById(R.id.onion4_1), findViewById(R.id.onion4_2), findViewById(R.id.onion4_3), findViewById(R.id.onion4_4)},
                 {findViewById(R.id.onion5_0), findViewById(R.id.onion5_1), findViewById(R.id.onion5_2), findViewById(R.id.onion5_3), findViewById(R.id.onion5_4)},
                 {findViewById(R.id.onion6_0), findViewById(R.id.onion6_1), findViewById(R.id.onion6_2), findViewById(R.id.onion6_3), findViewById(R.id.onion6_4)},
-                {findViewById(R.id.salad0), findViewById(R.id.salad1), findViewById(R.id.salad2)}};
+                {findViewById(R.id.salad0), findViewById(R.id.salad1), findViewById(R.id.salad2), findViewById(R.id.salad3), findViewById(R.id.salad4)}};
 
         fabArr = new FloatingActionButton[]{
                findViewById(R.id.main_FAB_left),findViewById(R.id.main_FAB_right)
@@ -145,10 +145,11 @@ public class MainActivity extends AppCompatActivity {
                 if((gameLogic.getMat()[i][j] == GameLogic.state.ONION)||
                         (gameLogic.getMat()[i][j] == GameLogic.state.SALAD)){
                     gridMatrix[i][j].setVisibility(View.VISIBLE);
-                } else if (gameLogic.getMat()[i][j] == GameLogic.state.EMPTY) {
+                }
+                else if (gameLogic.getMat()[i][j] == GameLogic.state.EMPTY) {
                     gridMatrix[i][j].setVisibility(View.INVISIBLE);
                 }
-                else{
+                else {
 
                 }
             }
