@@ -6,6 +6,7 @@ public class GameLogic {
 
      private final int TOTAL_PUKE = 3;
      private int pukeLeft;
+     private int score;
 
      private boolean gameOver = false;
 
@@ -26,7 +27,7 @@ public class GameLogic {
 
 
      enum state{
-          EMPTY,ONION,SALAD
+          EMPTY,ONION,SALAD,TUNA
      }
      private state[][] mat;
 
@@ -39,8 +40,8 @@ public class GameLogic {
 
      //initializing for first time;
      public GameLogic(){
-          int currSalad = 1;
           pukeLeft = TOTAL_PUKE;
+          score = 0;
           setMat();
      }
 
@@ -59,6 +60,14 @@ public class GameLogic {
           this.pukeLeft--;
           if(getPukeLeft() > TOTAL_PUKE)
                setGameOver(true);
+     }
+
+     public int getScore(){
+          return score;
+     }
+
+     public void changeScore(int num){
+          score += num;
      }
 
      public int getROWS() {
@@ -96,7 +105,14 @@ public class GameLogic {
 
      private void randomOnionAppear() {
           int col = (int)(Math.random() * ((getCOLS()-1) + 1));
+          int willTuna = (int)(Math.random() * (7));
+          int tunaCol = (int)(Math.random() * ((getCOLS()-1) + 1));
+
           getMat()[0][col] = state.ONION;
+          if((tunaCol != col) && (willTuna == 2)){
+               getMat()[0][tunaCol] = state.TUNA;
+          }
+
      }
 
      public void oneStepOnion(){
@@ -114,6 +130,19 @@ public class GameLogic {
                          else{
                               getMat()[i][j] = state.EMPTY;
                               getMat()[i+1][j] = state.ONION;
+                         }
+                    }
+                    else if(getMat()[i][j] == state.TUNA){
+                         if((i == getROWS()-2 ) && (getMat()[getROWS()-1][j] == state.SALAD)){
+                              changeScore(50);
+                              getMat()[i][j] = state.EMPTY;
+                         }
+                         else if((i == getROWS()-2 ) && (getMat()[getROWS()-1][j] == state.EMPTY)){
+                              getMat()[i][j] = state.EMPTY;
+                         }
+                         else{
+                              getMat()[i][j] = state.EMPTY;
+                              getMat()[i+1][j] = state.TUNA;
                          }
                     }
                }
@@ -134,67 +163,76 @@ public class GameLogic {
                }
                return;
           }
-          if (currSalad == 5){
+
+
+
+          else if (currSalad == 4){ //5
                if (direct == direction.LEFT){
-                    getMat()[getROWS()-1][5] = state.EMPTY;
-                    getMat()[getROWS()-1][4] = state.SALAD;
-                    currSalad = 1;
+                    getMat()[getROWS()-1][4] = state.EMPTY; //5
+                    getMat()[getROWS()-1][3] = state.SALAD; //4
+                    currSalad = 3;
                     return;
                }
                return;
           }
 
 
-          if (currSalad == 2){
+         else if (currSalad == 2){
                if (direct == direction.LEFT){
                     getMat()[getROWS()-1][2] = state.EMPTY;
                     getMat()[getROWS()-1][1] = state.SALAD;
-                    currSalad = 0;
+                    currSalad = 1;
 
                }
                //else if (btn == findViewById(R.id.main_FAB_right)) {
                else if (direct == direction.RIGHT) {
                     getMat()[getROWS() - 1][2] = state.EMPTY;
                     getMat()[getROWS() - 1][3] = state.SALAD;
-                    currSalad = 2;
+                    currSalad = 3;
 
                }
 
           }
 
-          if (currSalad == 4){
+
+
+         else if (currSalad == 1){
                if (direct == direction.LEFT){
-                    getMat()[getROWS()-1][4] = state.EMPTY;
-                    getMat()[getROWS()-1][3] = state.SALAD;
+                    getMat()[getROWS()-1][1] = state.EMPTY;
+                    getMat()[getROWS()-1][0] = state.SALAD;
                     currSalad = 0;
 
                }
                //else if (btn == findViewById(R.id.main_FAB_right)) {
                else if (direct == direction.RIGHT) {
-                    getMat()[getROWS() - 1][4] = state.EMPTY;
-                    getMat()[getROWS() - 1][5] = state.SALAD;
+                    getMat()[getROWS() - 1][1] = state.EMPTY;
+                    getMat()[getROWS() - 1][2] = state.SALAD;
                     currSalad = 2;
 
                }
 
           }
 
-          if (currSalad == 3){
+
+
+          else if (currSalad == 3){
                if (direct == direction.LEFT){
                     getMat()[getROWS()-1][3] = state.EMPTY;
                     getMat()[getROWS()-1][2] = state.SALAD;
-                    currSalad = 0;
+                    currSalad = 2;
 
                }
                //else if (btn == findViewById(R.id.main_FAB_right)) {
                else if (direct == direction.RIGHT) {
                     getMat()[getROWS() - 1][3] = state.EMPTY;
                     getMat()[getROWS() - 1][4] = state.SALAD;
-                    currSalad = 2;
+                    currSalad = 4;
 
                }
 
           }
+
+
      }
 
 

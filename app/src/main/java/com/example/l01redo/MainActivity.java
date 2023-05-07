@@ -17,6 +17,7 @@ import com.google.android.material.imageview.ShapeableImageView;
 public class MainActivity extends AppCompatActivity {
 
     ShapeableImageView[][] gridMatrix;
+    ShapeableImageView[][] prizeMatrix;
     FloatingActionButton[] fabArr;
     ShapeableImageView[] vomitArr;
     ShapeableImageView[] saladArr;
@@ -72,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
         saladArr = new ShapeableImageView[]{
                 findViewById(R.id.salad0), findViewById(R.id.salad1),
-                findViewById(R.id.salad2), findViewById(R.id.salad3),  findViewById(R.id.salad4)
+                findViewById(R.id.salad2), findViewById(R.id.salad3), findViewById(R.id.salad4)
         };
 
         gridMatrix = new ShapeableImageView[][]{
@@ -86,14 +87,19 @@ public class MainActivity extends AppCompatActivity {
                 {findViewById(R.id.salad0), findViewById(R.id.salad1), findViewById(R.id.salad2), findViewById(R.id.salad3), findViewById(R.id.salad4)}};
 
         fabArr = new FloatingActionButton[]{
-               findViewById(R.id.main_FAB_left),findViewById(R.id.main_FAB_right)
-       };
+                findViewById(R.id.main_FAB_left), findViewById(R.id.main_FAB_right)
+        };
 
-
-
+        prizeMatrix = new ShapeableImageView[][]{
+                {findViewById(R.id.tuna0_0), findViewById(R.id.tuna0_1), findViewById(R.id.tuna0_2), findViewById(R.id.tuna0_3), findViewById(R.id.tuna0_4)},
+                {findViewById(R.id.tuna1_0), findViewById(R.id.tuna1_1), findViewById(R.id.tuna1_2), findViewById(R.id.tuna1_3), findViewById(R.id.tuna1_4)},
+                {findViewById(R.id.tuna2_0), findViewById(R.id.tuna2_1), findViewById(R.id.tuna2_2), findViewById(R.id.tuna2_3), findViewById(R.id.tuna2_4)},
+                {findViewById(R.id.tuna3_0), findViewById(R.id.tuna3_1), findViewById(R.id.tuna3_2), findViewById(R.id.tuna3_3), findViewById(R.id.tuna3_4)},
+                {findViewById(R.id.tuna4_0), findViewById(R.id.tuna4_1), findViewById(R.id.tuna4_2), findViewById(R.id.tuna4_3), findViewById(R.id.tuna4_4)},
+                {findViewById(R.id.tuna5_0), findViewById(R.id.tuna5_1), findViewById(R.id.tuna5_2), findViewById(R.id.tuna5_3), findViewById(R.id.tuna5_4)},
+                {findViewById(R.id.tuna6_0), findViewById(R.id.tuna6_1), findViewById(R.id.tuna6_2), findViewById(R.id.tuna6_3), findViewById(R.id.tuna6_4)},
+                {findViewById(R.id.tuna7_0), findViewById(R.id.tuna7_1), findViewById(R.id.tuna7_2), findViewById(R.id.tuna7_3), findViewById(R.id.tuna7_4)}};
     }
-
-
     public void playerDirections(){
 
         for (FloatingActionButton btn: fabArr) {
@@ -145,9 +151,17 @@ public class MainActivity extends AppCompatActivity {
                 if((gameLogic.getMat()[i][j] == GameLogic.state.ONION)||
                         (gameLogic.getMat()[i][j] == GameLogic.state.SALAD)){
                     gridMatrix[i][j].setVisibility(View.VISIBLE);
+                    prizeMatrix[i][j].setVisibility(View.INVISIBLE);
                 }
+                else if(gameLogic.getMat()[i][j] == GameLogic.state.TUNA){
+                    prizeMatrix[i][j].setVisibility(View.VISIBLE);
+                    gridMatrix[i][j].setVisibility(View.INVISIBLE);
+
+                }
+
                 else if (gameLogic.getMat()[i][j] == GameLogic.state.EMPTY) {
                     gridMatrix[i][j].setVisibility(View.INVISIBLE);
+                    prizeMatrix[i][j].setVisibility(View.INVISIBLE);
                 }
                 else {
 

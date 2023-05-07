@@ -44,7 +44,46 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/scoreLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/heartsCounter"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        >
 
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/main_LBL_score"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_toEndOf="@+id/main_IMG_life3"
+            android:maxLines="1"
+            android:minLines="1"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:text="SCORE:"
+            >
+        </com.google.android.material.textview.MaterialTextView>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/main_TXT_score"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_toEndOf="@+id/main_LBL_score"
+            android:maxLines="1"
+            android:minLines="1"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:text="0">
+
+        </com.google.android.material.textview.MaterialTextView>
+
+    </LinearLayout>
+    
 
     <!-- grid -->
     <GridLayout
@@ -71,12 +110,36 @@
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/tuna0_0"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:src="@drawable/ic_icon_tuna"
+            android:layout_column="0"
+            android:layout_row="0"
+            android:scaleType="fitCenter"
+            android:padding="25dp"
+            />
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/onion0_1"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:src="@drawable/ic_icon_onion"
+            android:layout_column="1"
+            android:layout_row="0"
+            android:scaleType="fitCenter"
+            android:padding="25dp"
+            />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/tuna0_1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:src="@drawable/ic_icon_tuna"
             android:layout_column="1"
             android:layout_row="0"
             android:scaleType="fitCenter"
@@ -95,6 +158,18 @@
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/tuna0_2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:src="@drawable/ic_icon_tuna"
+            android:layout_column="2"
+            android:layout_row="0"
+            android:scaleType="fitCenter"
+            android:padding="25dp"
+            />
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/onion0_3"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -107,12 +182,36 @@
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/tuna0_3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:src="@drawable/ic_icon_tuna"
+            android:layout_column="3"
+            android:layout_row="0"
+            android:scaleType="fitCenter"
+            android:padding="25dp"
+            />
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/onion0_4"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:src="@drawable/ic_icon_onion"
+            android:layout_column="4"
+            android:layout_row="0"
+            android:scaleType="fitCenter"
+            android:padding="25dp"
+            />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/tuna0_4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:src="@drawable/ic_icon_tuna"
             android:layout_column="4"
             android:layout_row="0"
             android:scaleType="fitCenter"
@@ -132,12 +231,36 @@
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/tuna1_0"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:src="@drawable/ic_icon_tuna"
+            android:layout_column="0"
+            android:layout_row="1"
+            android:scaleType="fitCenter"
+            android:padding="25dp"
+            />
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/onion1_1"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:src="@drawable/ic_icon_onion"
+            android:layout_column="1"
+            android:layout_row="1"
+            android:scaleType="fitCenter"
+            android:padding="25dp"
+            />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/tuna1_1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:src="@drawable/ic_icon_tuna"
             android:layout_column="1"
             android:layout_row="1"
             android:scaleType="fitCenter"
@@ -156,6 +279,18 @@
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/tuna1_2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:src="@drawable/ic_icon_tuna"
+            android:layout_column="2"
+            android:layout_row="1"
+            android:scaleType="fitCenter"
+            android:padding="25dp"
+            />
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/onion1_3"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -168,12 +303,36 @@
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/tuna1_3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:src="@drawable/ic_icon_tuna"
+            android:layout_column="3"
+            android:layout_row="1"
+            android:scaleType="fitCenter"
+            android:padding="25dp"
+            />
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/onion1_4"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:src="@drawable/ic_icon_onion"
+            android:layout_column="4"
+            android:layout_row="1"
+            android:scaleType="fitCenter"
+            android:padding="25dp"
+            />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/tuna1_4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:src="@drawable/ic_icon_tuna"
             android:layout_column="4"
             android:layout_row="1"
             android:scaleType="fitCenter"
@@ -193,12 +352,36 @@
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/tuna2_0"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:src="@drawable/ic_icon_tuna"
+            android:layout_column="0"
+            android:layout_row="2"
+            android:scaleType="fitCenter"
+            android:padding="25dp"
+            />
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/onion2_1"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:src="@drawable/ic_icon_onion"
+            android:layout_column="1"
+            android:layout_row="2"
+            android:scaleType="fitCenter"
+            android:padding="25dp"
+            />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/tuna2_1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:src="@drawable/ic_icon_tuna"
             android:layout_column="1"
             android:layout_row="2"
             android:scaleType="fitCenter"
@@ -217,12 +400,36 @@
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/tuna2_2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:src="@drawable/ic_icon_tuna"
+            android:layout_column="2"
+            android:layout_row="2"
+            android:scaleType="fitCenter"
+            android:padding="25dp"
+            />
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/onion2_3"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:src="@drawable/ic_icon_onion"
+            android:layout_column="3"
+            android:layout_row="2"
+            android:scaleType="fitCenter"
+            android:padding="25dp"
+            />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/tuna2_3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:src="@drawable/ic_icon_tuna"
             android:layout_column="3"
             android:layout_row="2"
             android:scaleType="fitCenter"
@@ -240,7 +447,18 @@
             android:scaleType="fitCenter"
             android:padding="25dp"
             />
-
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/tuna2_4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:src="@drawable/ic_icon_tuna"
+            android:layout_column="4"
+            android:layout_row="2"
+            android:scaleType="fitCenter"
+            android:padding="25dp"
+            />
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/onion3_0"
             android:layout_width="0dp"
@@ -248,6 +466,18 @@
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:src="@drawable/ic_icon_onion"
+            android:layout_column="0"
+            android:layout_row="3"
+            android:scaleType="fitCenter"
+            android:padding="25dp"
+            />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/tuna3_0"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:src="@drawable/ic_icon_tuna"
             android:layout_column="0"
             android:layout_row="3"
             android:scaleType="fitCenter"
@@ -266,12 +496,36 @@
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/tuna3_1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:src="@drawable/ic_icon_tuna"
+            android:layout_column="1"
+            android:layout_row="3"
+            android:scaleType="fitCenter"
+            android:padding="25dp"
+            />
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/onion3_2"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:src="@drawable/ic_icon_onion"
+            android:layout_column="2"
+            android:layout_row="3"
+            android:scaleType="fitCenter"
+            android:padding="25dp"
+            />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/tuna3_2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:src="@drawable/ic_icon_tuna"
             android:layout_column="2"
             android:layout_row="3"
             android:scaleType="fitCenter"
@@ -291,12 +545,36 @@
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/tuna3_3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:src="@drawable/ic_icon_tuna"
+            android:layout_column="3"
+            android:layout_row="3"
+            android:scaleType="fitCenter"
+            android:padding="25dp"
+            />
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/onion3_4"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:src="@drawable/ic_icon_onion"
+            android:layout_column="4"
+            android:layout_row="3"
+            android:scaleType="fitCenter"
+            android:padding="25dp"
+            />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/tuna3_4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:src="@drawable/ic_icon_tuna"
             android:layout_column="4"
             android:layout_row="3"
             android:scaleType="fitCenter"
@@ -316,12 +594,36 @@
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/tuna4_0"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:src="@drawable/ic_icon_tuna"
+            android:layout_column="0"
+            android:layout_row="4"
+            android:scaleType="fitCenter"
+            android:padding="25dp"
+            />
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/onion4_1"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:src="@drawable/ic_icon_onion"
+            android:layout_column="1"
+            android:layout_row="4"
+            android:scaleType="fitCenter"
+            android:padding="25dp"
+            />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/tuna4_1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:src="@drawable/ic_icon_tuna"
             android:layout_column="1"
             android:layout_row="4"
             android:scaleType="fitCenter"
@@ -340,6 +642,18 @@
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/tuna4_2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:src="@drawable/ic_icon_tuna"
+            android:layout_column="2"
+            android:layout_row="4"
+            android:scaleType="fitCenter"
+            android:padding="25dp"
+            />
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/onion4_3"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -352,12 +666,36 @@
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/tuna4_3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:src="@drawable/ic_icon_tuna"
+            android:layout_column="3"
+            android:layout_row="4"
+            android:scaleType="fitCenter"
+            android:padding="25dp"
+            />
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/onion4_4"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:src="@drawable/ic_icon_onion"
+            android:layout_column="4"
+            android:layout_row="4"
+            android:scaleType="fitCenter"
+            android:padding="25dp"
+            />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/tuna4_4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:src="@drawable/ic_icon_tuna"
             android:layout_column="4"
             android:layout_row="4"
             android:scaleType="fitCenter"
@@ -377,12 +715,36 @@
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/tuna5_0"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:src="@drawable/ic_icon_tuna"
+            android:layout_column="0"
+            android:layout_row="5"
+            android:scaleType="fitCenter"
+            android:padding="25dp"
+            />
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/onion5_1"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:src="@drawable/ic_icon_onion"
+            android:layout_column="1"
+            android:layout_row="5"
+            android:scaleType="fitCenter"
+            android:padding="25dp"
+            />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/tuna5_1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:src="@drawable/ic_icon_tuna"
             android:layout_column="1"
             android:layout_row="5"
             android:scaleType="fitCenter"
@@ -401,12 +763,36 @@
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/tuna5_2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:src="@drawable/ic_icon_tuna"
+            android:layout_column="2"
+            android:layout_row="5"
+            android:scaleType="fitCenter"
+            android:padding="25dp"
+            />
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/onion5_3"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:src="@drawable/ic_icon_onion"
+            android:layout_column="3"
+            android:layout_row="5"
+            android:scaleType="fitCenter"
+            android:padding="25dp"
+            />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/tuna5_3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:src="@drawable/ic_icon_tuna"
             android:layout_column="3"
             android:layout_row="5"
             android:scaleType="fitCenter"
@@ -425,12 +811,36 @@
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/tuna5_4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:src="@drawable/ic_icon_tuna"
+            android:layout_column="4"
+            android:layout_row="5"
+            android:scaleType="fitCenter"
+            android:padding="25dp"
+            />
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/onion6_0"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:src="@drawable/ic_icon_onion"
+            android:layout_column="0"
+            android:layout_row="6"
+            android:scaleType="fitCenter"
+            android:padding="25dp"
+            />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/tuna6_0"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:src="@drawable/ic_icon_tuna"
             android:layout_column="0"
             android:layout_row="6"
             android:scaleType="fitCenter"
@@ -449,12 +859,36 @@
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/tuna6_1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:src="@drawable/ic_icon_tuna"
+            android:layout_column="1"
+            android:layout_row="6"
+            android:scaleType="fitCenter"
+            android:padding="25dp"
+            />
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/onion6_2"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
             android:layout_rowWeight="1"
             android:src="@drawable/ic_icon_onion"
+            android:layout_column="2"
+            android:layout_row="6"
+            android:scaleType="fitCenter"
+            android:padding="25dp"
+            />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/tuna6_2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:src="@drawable/ic_icon_tuna"
             android:layout_column="2"
             android:layout_row="6"
             android:scaleType="fitCenter"
@@ -473,6 +907,18 @@
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/tuna6_3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:src="@drawable/ic_icon_tuna"
+            android:layout_column="3"
+            android:layout_row="6"
+            android:scaleType="fitCenter"
+            android:padding="25dp"
+            />
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/onion6_4"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -484,7 +930,18 @@
             android:scaleType="fitCenter"
             android:padding="25dp"
             />
-
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/tuna6_4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:src="@drawable/ic_icon_tuna"
+            android:layout_column="4"
+            android:layout_row="6"
+            android:scaleType="fitCenter"
+            android:padding="25dp"
+            />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/salad0"
@@ -498,6 +955,20 @@
             android:scaleType="fitCenter"
             android:padding="10dp"
             />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/tuna7_0"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:src="@drawable/ic_icon_tuna"
+            android:layout_column="0"
+            android:layout_row="7"
+            android:scaleType="fitCenter"
+            android:padding="25dp"
+            />
+
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/salad1"
             android:layout_width="0dp"
@@ -510,6 +981,20 @@
             android:scaleType="fitCenter"
             android:padding="10dp"
             />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/tuna7_1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:src="@drawable/ic_icon_tuna"
+            android:layout_column="1"
+            android:layout_row="7"
+            android:scaleType="fitCenter"
+            android:padding="25dp"
+            />
+
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/salad2"
             android:layout_width="0dp"
@@ -522,6 +1007,20 @@
             android:scaleType="fitCenter"
             android:padding="10dp"
             />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/tuna7_2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:src="@drawable/ic_icon_tuna"
+            android:layout_column="2"
+            android:layout_row="7"
+            android:scaleType="fitCenter"
+            android:padding="25dp"
+            />
+
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/salad3"
             android:layout_width="0dp"
@@ -534,6 +1033,20 @@
             android:scaleType="fitCenter"
             android:padding="10dp"
             />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/tuna7_3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:src="@drawable/ic_icon_tuna"
+            android:layout_column="3"
+            android:layout_row="7"
+            android:scaleType="fitCenter"
+            android:padding="25dp"
+            />
+
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/salad4"
             android:layout_width="0dp"
@@ -545,6 +1058,19 @@
             android:layout_row="7"
             android:scaleType="fitCenter"
             android:padding="10dp"
+            />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/tuna7_4"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:src="@drawable/ic_icon_tuna"
+            android:layout_column="4"
+            android:layout_row="7"
+            android:scaleType="fitCenter"
+            android:padding="25dp"
             />
 
 
