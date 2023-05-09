@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.imageview.ShapeableImageView;
+import com.google.android.material.textview.MaterialTextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,9 +23,11 @@ public class MainActivity extends AppCompatActivity {
     ShapeableImageView[] vomitArr;
     ShapeableImageView[] saladArr;
 
+    MaterialTextView inGameScore;
+
     private GameLogic gameLogic;
 
-
+    private int delay = 700;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,10 @@ public class MainActivity extends AppCompatActivity {
         playerDirections();
         oneStep();
 
+    }
+
+    private void updateScore(){
+        inGameScore.setText(""+gameLogic.getScore());
     }
 
     private void showVomit(){
@@ -99,6 +106,9 @@ public class MainActivity extends AppCompatActivity {
                 {findViewById(R.id.tuna5_0), findViewById(R.id.tuna5_1), findViewById(R.id.tuna5_2), findViewById(R.id.tuna5_3), findViewById(R.id.tuna5_4)},
                 {findViewById(R.id.tuna6_0), findViewById(R.id.tuna6_1), findViewById(R.id.tuna6_2), findViewById(R.id.tuna6_3), findViewById(R.id.tuna6_4)},
                 {findViewById(R.id.tuna7_0), findViewById(R.id.tuna7_1), findViewById(R.id.tuna7_2), findViewById(R.id.tuna7_3), findViewById(R.id.tuna7_4)}};
+
+        inGameScore = findViewById(R.id.main_TXT_score);
+
     }
     public void playerDirections(){
 
@@ -135,7 +145,8 @@ public class MainActivity extends AppCompatActivity {
                     gameLogic.onionInSalad = false;
                 }
                 refreshUi();
-                h.postDelayed(this,1000);
+                gameLogic.changeScore(1);
+                h.postDelayed(this,delay);
             }
         };
         h.post(runnable);
@@ -168,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
-
+        updateScore();
         showVomit();
 
     }

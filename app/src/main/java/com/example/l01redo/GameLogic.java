@@ -134,7 +134,7 @@ public class GameLogic {
                     }
                     else if(getMat()[i][j] == state.TUNA){
                          if((i == getROWS()-2 ) && (getMat()[getROWS()-1][j] == state.SALAD)){
-                              changeScore(50);
+                              changeScore(10);
                               getMat()[i][j] = state.EMPTY;
                          }
                          else if((i == getROWS()-2 ) && (getMat()[getROWS()-1][j] == state.EMPTY)){
