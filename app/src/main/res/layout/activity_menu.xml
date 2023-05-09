@@ -8,19 +8,88 @@
     tools:context=".MenuActivity">
 
 
+
+
     <LinearLayout
         android:id="@+id/menu_LO_buttons"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:orientation="vertical">
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp"
+        >
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/menu_BTN_slow"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/ocean_500"
+            android:text="Button Mode - Slow"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="25dp"
+            android:layout_margin="10dp"
+
+            >
+
+        </com.google.android.material.button.MaterialButton>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/menu_BTN_fast"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/ocean_500"
+            android:text="Button Mode - Fast"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="25dp"
+            android:layout_margin="10dp"
+            >
+
+        </com.google.android.material.button.MaterialButton>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/menu_LO_sensors"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/menu_LO_buttons"
+        >
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/menu_BTN_sensors"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/ocean_500"
+            android:text="Sensors Mode"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="25dp"
+            android:layout_margin="10dp"
+            >
+
+        </com.google.android.material.button.MaterialButton>
+
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+        android:id="@+id/menu_LO_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical"
+        android:layout_below="@+id/menu_LO_sensors"
+        >
 
 
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/menu_BTN_start"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="250dp"
+            android:layout_height="100dp"
             android:backgroundTint="@color/ocean_500"
             android:text="Start"
             android:layout_marginTop="15dp"
@@ -30,9 +99,21 @@
 
         </com.google.android.material.button.MaterialButton>
 
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/menu_LO_scoreboard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical"
+        android:layout_below="@+id/menu_LO_start"
+        >
         <com.google.android.material.button.MaterialButton
             android:id="@+id/menu_BTN_score"
-            android:layout_width="match_parent"
+            android:layout_width="180dp"
             android:layout_height="match_parent"
             android:backgroundTint="@color/ocean_500"
             android:text="Scoreboard"
@@ -46,53 +127,7 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/menu_LO_radio"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/menu_LO_buttons"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="100dp"
-        >
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_margin="15dp"
 
-            >
-            <RadioButton
-                android:id="@+id/menu_RB_fast"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Buttons - Fast"
-                >
-
-            </RadioButton>
-            <RadioButton
-                android:id="@+id/menu_RB_slow"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Buttons - Slow"
-                >
-            </RadioButton>
-
-            <RadioButton
-                android:id="@+id/menu_RB_sensor"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Sensors"
-                >
-
-            </RadioButton>
-
-
-        </RadioGroup>
-
-
-
-    </LinearLayout>
 
 
 

@@ -105,7 +105,7 @@ public class GameLogic {
 
      private void randomOnionAppear() {
           int col = (int)(Math.random() * ((getCOLS()-1) + 1));
-          int willTuna = (int)(Math.random() * (7));
+          int willTuna = (int)(Math.random() * (4));
           int tunaCol = (int)(Math.random() * ((getCOLS()-1) + 1));
 
           getMat()[0][col] = state.ONION;

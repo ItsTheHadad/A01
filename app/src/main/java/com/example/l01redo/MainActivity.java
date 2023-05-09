@@ -11,6 +11,8 @@ import android.os.Vibrator;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.l01redo.Interfaces.SensorCallback;
+import com.example.l01redo.Utilities.SensorsDetector;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textview.MaterialTextView;
@@ -27,7 +29,11 @@ public class MainActivity extends AppCompatActivity {
 
     private GameLogic gameLogic;
 
-    private int delay = 700;
+    private SensorsDetector sensorsDetector; //dont forget to stop sensor on next activity
+
+    private int delay = 1600;
+
+    boolean isButton = false; // false = sensor
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +45,25 @@ public class MainActivity extends AppCompatActivity {
         gameLogic = new GameLogic();
         matrixStart();
         playerDirections();
+        initSensorDetection();//before btnorsnsr
+        btnOrSnsr(isButton);
         oneStep();
 
+
+    }
+
+    private void btnOrSnsr(boolean isButton){
+        if(isButton){
+            for(int i = 0; i <fabArr.length; i++){
+                fabArr[i].setVisibility(View.VISIBLE);
+            }
+        }
+        else {
+            sensorsDetector.start();
+            for(int i = 0; i <fabArr.length; i++){
+                fabArr[i].setVisibility(View.INVISIBLE);
+            }
+        }
     }
 
     private void updateScore(){
@@ -69,6 +92,10 @@ public class MainActivity extends AppCompatActivity {
             vomitArr[2].setVisibility(View.INVISIBLE);
         }
 
+    }
+
+    private void changeDelay(int delayBonus){
+        this.delay += delayBonus;
     }
 
     private void findViews() {
@@ -200,5 +227,48 @@ public class MainActivity extends AppCompatActivity {
         vibrate();
         Toast.makeText(getApplicationContext(), "Disgusting.", Toast.LENGTH_SHORT).show();
     }
+
+    private void initSensorDetection(){
+        sensorsDetector = new SensorsDetector(this, new SensorCallback() {
+            @Override
+            public void moveLeft() {
+                gameLogic.changeSaladPos(GameLogic.direction.LEFT);
+                refreshUi();
+            }
+
+            @Override
+            public void moveRight() {
+                gameLogic.changeSaladPos(GameLogic.direction.RIGHT);
+                refreshUi();
+            }
+
+            @Override
+            public void moveBack() {
+                Toast.makeText(getApplicationContext(), "back.", Toast.LENGTH_SHORT).show();
+                if(delay < 1600){
+                    changeDelay(200);
+                    //update the delay?
+                    //toast
+                }
+                else{
+                    //toast max
+                }
+            }
+
+            @Override
+            public void moveForw() {
+                Toast.makeText(getApplicationContext(), "forward.", Toast.LENGTH_SHORT).show();
+                if(delay > 400){
+                    changeDelay(-200);
+                    //update the delay?
+                    //toast
+
+                }
+                else{
+                    //toast max
+                }
+            }
+        });
+    }//dont forget to stop sensor on next activity
 
 }
