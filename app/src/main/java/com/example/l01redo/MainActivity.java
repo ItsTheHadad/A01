@@ -31,11 +31,11 @@ public class MainActivity extends AppCompatActivity {
 
     private SensorsDetector sensorsDetector; //dont forget to stop sensor on next activity
 
-    private final int FAST_MODE = 800 ;//@
-    private final int SLOW_MODE = 1300;//@
-    private int delay = SLOW_MODE; //deafult is slow on sensor @
+    private final int FAST_MODE = 800 ;
+    private final int SLOW_MODE = 1300;
+    private int delay = SLOW_MODE; //deafult is slow on sensor
 
-    boolean isButton = false; // false = sensor @
+    boolean isButton = false; // false = sensor
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
