@@ -46,6 +46,7 @@ public class MenuActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     if (btn == findViewById(R.id.menu_BTN_slow)){
 
+
                     }
                     else if (btn == findViewById(R.id.menu_BTN_fast)){
 
