@@ -18,7 +18,8 @@ public class SensorsDetector {
 
     private SensorEventListener sensorEventListener;
 
-    private long timestamp = 0;
+    private long timestampMove = 0;
+    private long timestampTilt = 0;
 
 
     public SensorsDetector(Context context, SensorCallback sensorCallback){
@@ -34,7 +35,7 @@ public class SensorsDetector {
             @Override
             public void onSensorChanged(SensorEvent event) {
                 float x = event.values[0];
-                float y = event.values[1];
+                float y = event.values[2];
 
                 changeSensor(x,y);
             }
@@ -51,8 +52,8 @@ public class SensorsDetector {
 
     private void changeSensor(float x, float y){
 
-        if(System.currentTimeMillis() - timestamp > 300){
-            timestamp = System.currentTimeMillis();
+        if(System.currentTimeMillis() - timestampMove > 300){
+            timestampMove = System.currentTimeMillis();
 
             if(x>2){
                 if (sensorCallback != null){
@@ -65,18 +66,24 @@ public class SensorsDetector {
                 }
 
             }
-            if(y>2.0){
+
+
+        }
+
+        if(System.currentTimeMillis() - timestampTilt > 1000){
+            timestampTilt = System.currentTimeMillis();
+
+            if(y<-1){ //different values since its harder to move back
                 if(sensorCallback != null){
-                   sensorCallback.moveForw(); //not working
+                    sensorCallback.moveForw();
                 }
 
             }
-            if(y<-2){
+            if(y>7){
                 if(sensorCallback != null){
-                    sensorCallback.moveBack(); //not working
+                    sensorCallback.moveBack();
                 }
             }
-
         }
 
     }

@@ -31,9 +31,11 @@ public class MainActivity extends AppCompatActivity {
 
     private SensorsDetector sensorsDetector; //dont forget to stop sensor on next activity
 
-    private int delay = 1600;
+    private final int FAST_MODE = 800;
+    private final int SLOW_MODE = 1300;
+    private int delay = SLOW_MODE; //deafult is slow on sensor
 
-    boolean isButton = true; // false = sensor
+    boolean isButton = false; // false = sensor
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,8 +96,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void changeDelay(int delayBonus){
-        this.delay += delayBonus;
+    private void changeDelay(int newDelay){
+        this.delay = newDelay;
     }
 
     private void findViews() {
@@ -244,28 +246,26 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void moveBack() {
-                Toast.makeText(getApplicationContext(), "back.", Toast.LENGTH_SHORT).show();
-                if(delay < 1600){
-                    changeDelay(200);
+                if(delay != FAST_MODE){
+                    changeDelay(FAST_MODE);
+                    Toast.makeText(getApplicationContext(), "Fast Mode", Toast.LENGTH_SHORT).show();
                     //update the delay?
-                    //toast
                 }
                 else{
-                    //toast max
+                    Toast.makeText(getApplicationContext(), "Max Speed", Toast.LENGTH_SHORT).show();
+
                 }
             }
 
             @Override
             public void moveForw() {
-                Toast.makeText(getApplicationContext(), "forward.", Toast.LENGTH_SHORT).show();
-                if(delay > 400){
-                    changeDelay(-200);
+                if(delay != SLOW_MODE){
+                    changeDelay(SLOW_MODE);
+                    Toast.makeText(getApplicationContext(), "Slow Mode", Toast.LENGTH_SHORT).show();
                     //update the delay?
-                    //toast
-
                 }
                 else{
-                    //toast max
+                    Toast.makeText(getApplicationContext(), "Min Speed", Toast.LENGTH_SHORT).show();
                 }
             }
         });
