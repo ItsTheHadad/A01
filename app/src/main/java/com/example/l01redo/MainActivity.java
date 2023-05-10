@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
     private int delay = 1600;
 
-    boolean isButton = false; // false = sensor
+    boolean isButton = true; // false = sensor
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
