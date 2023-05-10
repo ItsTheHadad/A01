@@ -47,8 +47,6 @@ public class SensorsDetector {
         };
 
 
-
-
     }
 
     private void changeSensor(float x, float y){
@@ -67,13 +65,13 @@ public class SensorsDetector {
                 }
 
             }
-            if(y>25.0){
+            if(y>2.0){
                 if(sensorCallback != null){
-                   // sensorCallback.moveForw(); not working
+                   sensorCallback.moveForw(); //not working
                 }
 
             }
-            if(y!=0){
+            if(y<-2){
                 if(sensorCallback != null){
                     sensorCallback.moveBack(); //not working
                 }
