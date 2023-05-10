@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.nio.file.Files;
+
 public class MenuActivity extends AppCompatActivity {
 
     MaterialButton[] buttonModeArrBtn;
@@ -35,7 +37,6 @@ public class MenuActivity extends AppCompatActivity {
         startBtn = findViewById(R.id.menu_BTN_start);
 
         scoreBtn = findViewById(R.id.menu_BTN_score);
-
     }
 
     private void buttonModeClick(){
