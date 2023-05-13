@@ -65,6 +65,17 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    protected void onResume() { //@@not working
+        super.onResume();
+        if(!isButton)
+            sensorsDetector.start();
+    }
+    @Override
+    protected void onPause() { //@@ not working
+        super.onPause();
+        sensorsDetector.stop();
+    }
+
     private void initControls(){
         playerDirections();
         initSensorDetection();

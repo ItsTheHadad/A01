@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.View;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
@@ -15,7 +17,8 @@ public class GameOverActivity extends AppCompatActivity {
     MaterialTextView nameTxt;
     TextInputEditText enterNameInput;
     MaterialButton saveBtn;
-    MaterialButton[] screenBtns;
+    MaterialButton scrBtn;
+    MaterialButton menuBtn;
 
     public static final String LEVEL= "LEVEL";
 
@@ -33,7 +36,7 @@ public class GameOverActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_over);
 
-        findViews();
+        initView();
 
         Intent prevIntent = getIntent();
         setFast(prevIntent.getBooleanExtra(LEVEL,false));
@@ -43,6 +46,45 @@ public class GameOverActivity extends AppCompatActivity {
         showScore();
 
 
+    }
+
+    public void saveBtnClick(){
+        saveBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                menuBtn.setVisibility(View.VISIBLE);
+                scrBtn.setVisibility(View.VISIBLE);
+                nameTxt.setText("Score Saved");
+                enterNameInput.setVisibility(View.INVISIBLE);
+                saveBtn.setVisibility(View.INVISIBLE);
+
+                //add the actual saving from the enterNameInput
+            }
+        });
+    }
+    public void menuBtnClick(){
+        menuBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                moveToMenuActivity();
+            }
+        });
+    }
+    public void scoreBtnClick(){
+        scrBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
+    }
+
+    public void initView(){
+        findViews();
+        menuBtn.setVisibility(View.INVISIBLE);
+        scrBtn.setVisibility(View.INVISIBLE);
+        saveBtnClick();
+        menuBtnClick();
+        scoreBtnClick();
     }
 
     public boolean isFast() {
@@ -78,14 +120,20 @@ public class GameOverActivity extends AppCompatActivity {
 
         saveBtn = findViewById(R.id.go_BTN_save);
 
-        screenBtns = new MaterialButton[]{
-                findViewById(R.id.go_BTN_scoreboard),  findViewById(R.id.go_BTN_menu)
-        };
+        scrBtn = findViewById(R.id.go_BTN_scoreboard);
+
+        menuBtn = findViewById(R.id.go_BTN_menu);
 
     }
 
     public void showScore(){
         scoreChangingTxt.setText(""+getScore());
+    }
+
+    public void moveToMenuActivity(){
+        Intent menuIntent = new Intent(this, MenuActivity.class);
+        startActivity(menuIntent);
+        finish();
     }
 
 }
