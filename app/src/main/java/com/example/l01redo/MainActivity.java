@@ -3,6 +3,8 @@ package com.example.l01redo;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -31,36 +33,62 @@ public class MainActivity extends AppCompatActivity {
 
     private SensorsDetector sensorsDetector; //dont forget to stop sensor on next activity
 
+
+    public static final String LEVEL= "LEVEL";
+
+    public static final String BUTTON = "BUTTON";
+
     private final int FAST_MODE = 800 ;
     private final int SLOW_MODE = 1300;
-    private int delay = SLOW_MODE; //deafult is slow on sensor
+    private int delay;
 
-    boolean isButton = false; // false = sensor
+    MediaPlayer mediaPlayerWubba;
+    boolean isButton;
+    boolean isFast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Intent prevIntent = getIntent();
+        isFast = prevIntent.getBooleanExtra(LEVEL,false);
+        isButton = prevIntent.getBooleanExtra(BUTTON, false);
+
+
+
+        mediaPlayerWubba = MediaPlayer.create(this,R.raw.wubba);
+
         findViews();
 
         gameLogic = new GameLogic();
         matrixStart();
-        playerDirections();
-        initSensorDetection();//before btnorsnsr
-        btnOrSnsr(isButton);
+        initControls();//before btnorsnsr
+        initSettings(isButton);
         oneStep();
 
 
     }
 
-    private void btnOrSnsr(boolean isButton){
+    private void initControls(){
+        playerDirections();
+        initSensorDetection();
+    }
+
+    private void initSettings(boolean isButton){
         if(isButton){
             for(int i = 0; i <fabArr.length; i++){
                 fabArr[i].setVisibility(View.VISIBLE);
             }
+            if(isFast){
+                delay = FAST_MODE;
+            }
+            else{
+                delay = SLOW_MODE;
+            }
         }
         else {
+            delay = SLOW_MODE;
             sensorsDetector.start();
             for(int i = 0; i <fabArr.length; i++){
                 fabArr[i].setVisibility(View.INVISIBLE);
@@ -225,7 +253,14 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+    private void playWubba(){
+        mediaPlayerWubba.start();
+    }
+
+
     private void vibrateAndToast(){
+        playWubba();
         vibrate();
         Toast.makeText(getApplicationContext(), "Disgusting.", Toast.LENGTH_SHORT).show();
     }
