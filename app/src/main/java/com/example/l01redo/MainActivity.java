@@ -2,19 +2,16 @@ package com.example.l01redo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.VibrationEffect;
-import android.os.Vibrator;
 import android.view.View;
 import android.widget.Toast;
 
 import com.example.l01redo.Interfaces.SensorCallback;
 import com.example.l01redo.Utilities.SensorsDetector;
+import com.example.l01redo.Utilities.SignalGenerator;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textview.MaterialTextView;
@@ -33,16 +30,15 @@ public class MainActivity extends AppCompatActivity {
 
     private SensorsDetector sensorsDetector; //dont forget to stop sensor on next activity
 
-
+    private SignalGenerator signalGenerator;
     public static final String LEVEL= "LEVEL";
 
     public static final String BUTTON = "BUTTON";
 
+
     private final int FAST_MODE = 800 ;
     private final int SLOW_MODE = 1300;
     private int delay;
-
-    MediaPlayer mediaPlayerWubba;
     boolean isButton;
     boolean isFast;
 
@@ -52,19 +48,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Intent prevIntent = getIntent();
-        isFast = prevIntent.getBooleanExtra(LEVEL,false);
-        isButton = prevIntent.getBooleanExtra(BUTTON, false);
+        setFast(prevIntent.getBooleanExtra(LEVEL,false));
+        setButton(prevIntent.getBooleanExtra(BUTTON, false));
 
-
-
-        mediaPlayerWubba = MediaPlayer.create(this,R.raw.wubba);
+        signalGenerator.initSG(this); // have to come first
+        signalGenerator = SignalGenerator.getInstance();
 
         findViews();
 
         gameLogic = new GameLogic();
         matrixStart();
-        initControls();//before btnorsnsr
-        initSettings(isButton);
+        initControls();
+        initSettings(getIsButton());
         oneStep();
 
 
@@ -80,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
             for(int i = 0; i <fabArr.length; i++){
                 fabArr[i].setVisibility(View.VISIBLE);
             }
-            if(isFast){
+            if(getIsFast()){
                 delay = FAST_MODE;
             }
             else{
@@ -179,6 +174,7 @@ public class MainActivity extends AppCompatActivity {
                     else if (btn == findViewById(R.id.main_FAB_left)){
                         gameLogic.changeSaladPos(GameLogic.direction.LEFT);
                     }
+
                     refreshUi();
                 }
             });
@@ -198,15 +194,28 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 gameLogic.oneStepOnion();
                 if(gameLogic.onionInSalad){
-                    vibrateAndToast();
+                    signalOnHit();
                     gameLogic.onionInSalad = false;
                 }
-                refreshUi();
                 gameLogic.changeScore(1);
+                refreshUi();
                 h.postDelayed(this,delay);
+
+                if(gameLogic.isGameOver()){
+                    h.removeCallbacks(this); // stop program so it wont be updated
+                    doGameOver(); // stop sensor + move activity
+                }
             }
+
+
         };
+
         h.post(runnable);
+    }
+
+    public void doGameOver(){
+        sensorsDetector.stop(); // stop sensor
+        moveToGOActivity();
     }
 
 
@@ -231,9 +240,6 @@ public class MainActivity extends AppCompatActivity {
                     gridMatrix[i][j].setVisibility(View.INVISIBLE);
                     prizeMatrix[i][j].setVisibility(View.INVISIBLE);
                 }
-                else {
-
-                }
             }
         }
         updateScore();
@@ -241,28 +247,22 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void vibrate(){
-        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-            v.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
-        }
-        else {
-            v.vibrate(500);
-
-        }
+    public void playCrashSound(){
+        signalGenerator.getCrashSound().start();
     }
 
 
-    private void playWubba(){
-        mediaPlayerWubba.start();
-    }
-
-
-    private void vibrateAndToast(){
-        playWubba();
+    public void signalOnHit(){
+        playCrashSound();
         vibrate();
-        Toast.makeText(getApplicationContext(), "Disgusting.", Toast.LENGTH_SHORT).show();
+        toast("Disgusting.");
+    }
+
+    public void vibrate(){
+        signalGenerator.vibrate();
+    }
+    public void toast(String str){
+        signalGenerator.toast(str);
     }
 
     private void initSensorDetection(){
@@ -304,6 +304,31 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-    }//dont forget to stop sensor on next activity
+    }
+
+    public boolean getIsButton() {
+        return isButton;
+    }
+
+    public boolean getIsFast() {
+        return isFast;
+    }
+
+    public void setButton(boolean button) {
+        isButton = button;
+    }
+
+    public void setFast(boolean fast) {
+        isFast = fast;
+    }
+
+    private void moveToGOActivity(){
+        Intent GOIntent = new Intent(this, GameOverActivity.class);
+        GOIntent.putExtra(GameOverActivity.LEVEL,getIsFast()); // to know what difficulty the user was on
+        GOIntent.putExtra(GameOverActivity.BUTTON,getIsButton()); // to know if the user used btns or snsrs
+        GOIntent.putExtra(GameOverActivity.SCORE,gameLogic.getScore()); // to know the score of the user
+        startActivity(GOIntent);
+        finish();
+    }
 
 }

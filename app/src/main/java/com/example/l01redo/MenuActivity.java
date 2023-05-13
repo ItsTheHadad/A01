@@ -19,9 +19,8 @@ public class MenuActivity extends AppCompatActivity {
     MaterialButton startBtn;
     MaterialButton scoreBtn;
 
-    boolean isFast;
     boolean isButton;
-
+    boolean isFast;
 
 
     @Override
@@ -30,6 +29,8 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
 
         findViews();
+        setButton(true);//default
+        setFast(false);//default
 
         startAllButtons();
 

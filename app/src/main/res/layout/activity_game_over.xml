@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GameOverActivity"
+    android:background="@color/yellow_300"
+    >
+
+
+
+    <LinearLayout
+        android:id="@+id/go_scoreLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true"
+        >
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/go_LBL_gameOver"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="GAME OVER"
+            android:textSize="50sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginTop="30dp"
+            android:textColor="@color/black"
+
+            />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/go_LBL_score"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Score:"
+            android:textSize="50sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginTop="30dp"
+            android:layout_below="@+id/go_LBL_gameOver"
+            android:textColor="@color/black"
+
+            />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/go_TXT_score"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/go_LBL_score"
+            android:maxLines="1"
+            android:minLines="1"
+            android:textSize="45sp"
+            android:textStyle="bold"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:text="score"
+            android:textColor="@color/blackFade"
+
+            />
+
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+        android:id="@+id/go_nameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/go_scoreLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        >
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/go_LBL_enter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Enter Your Name:"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:layout_below="@+id/go_LBL_gameOver"
+            />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/go_ET_enter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:hint="Here"
+            android:textColor="@color/white"
+            android:textSize="35sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/go_BTN_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/go_nameLayout"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="@color/ocean_500"
+        android:text="Save"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        >
+    </com.google.android.material.button.MaterialButton>
+
+
+
+
+
+
+    <LinearLayout
+        android:id="@+id/diffActivityLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/go_BTN_save"
+        android:layout_marginTop="50dp"
+        android:layout_centerInParent="true"
+        >
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/go_BTN_scoreboard"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/ocean_500"
+            android:text="ScoreBoard"
+            android:gravity="center"
+            android:layout_margin="10dp"
+           />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/go_BTN_menu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/ocean_500"
+            android:text="back to menu"
+            android:gravity="center"
+            android:layout_margin="10dp"
+            />
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

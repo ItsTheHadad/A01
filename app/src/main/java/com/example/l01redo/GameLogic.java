@@ -14,7 +14,7 @@ public class GameLogic {
 
      public boolean onionInSalad = false;
 
-     public boolean isGameOver() { // on the next assignment it will be used - if game over - end;
+     public boolean isGameOver() {
           return gameOver;
      }
 
@@ -58,7 +58,7 @@ public class GameLogic {
 
      public void setPukeLeft() {
           this.pukeLeft--;
-          if(getPukeLeft() > TOTAL_PUKE)
+          if(getPukeLeft() <= 0)
                setGameOver(true);
      }
 
@@ -147,7 +147,9 @@ public class GameLogic {
                     }
                }
           }
-          randomOnionAppear();
+          if(!isGameOver()){
+               randomOnionAppear();
+          }
      }
 
      //salad functions
@@ -159,9 +161,7 @@ public class GameLogic {
                     getMat()[getROWS()-1][0] = state.EMPTY;
                     getMat()[getROWS()-1][1]=state.SALAD;
                     currSalad = 1;
-                    return;
                }
-               return;
           }
 
 
@@ -171,9 +171,7 @@ public class GameLogic {
                     getMat()[getROWS()-1][4] = state.EMPTY; //5
                     getMat()[getROWS()-1][3] = state.SALAD; //4
                     currSalad = 3;
-                    return;
                }
-               return;
           }
 
 
@@ -184,7 +182,6 @@ public class GameLogic {
                     currSalad = 1;
 
                }
-               //else if (btn == findViewById(R.id.main_FAB_right)) {
                else if (direct == direction.RIGHT) {
                     getMat()[getROWS() - 1][2] = state.EMPTY;
                     getMat()[getROWS() - 1][3] = state.SALAD;
@@ -203,7 +200,7 @@ public class GameLogic {
                     currSalad = 0;
 
                }
-               //else if (btn == findViewById(R.id.main_FAB_right)) {
+
                else if (direct == direction.RIGHT) {
                     getMat()[getROWS() - 1][1] = state.EMPTY;
                     getMat()[getROWS() - 1][2] = state.SALAD;
@@ -222,7 +219,7 @@ public class GameLogic {
                     currSalad = 2;
 
                }
-               //else if (btn == findViewById(R.id.main_FAB_right)) {
+
                else if (direct == direction.RIGHT) {
                     getMat()[getROWS() - 1][3] = state.EMPTY;
                     getMat()[getROWS() - 1][4] = state.SALAD;
