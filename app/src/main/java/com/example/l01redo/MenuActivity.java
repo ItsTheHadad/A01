@@ -115,7 +115,14 @@ public class MenuActivity extends AppCompatActivity {
         });
     }
 
-    private void scoreBtnClick(){}
+    private void scoreBtnClick(){
+        scoreBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                moveToScoreBoardActivity();
+            }
+        });
+    }
 
     private void moveToMainActivity(){
         Intent mainIntent = new Intent(this, MainActivity.class);
@@ -125,7 +132,12 @@ public class MenuActivity extends AppCompatActivity {
         finish();
     }
 
-    private void moveToScoreBoardActivity(){}
+    private void moveToScoreBoardActivity(){
+        Intent sbIntent = new Intent(this, ScoreBoardActivity.class);
+
+        startActivity(sbIntent);
+        finish();
+    }
 
 
 
