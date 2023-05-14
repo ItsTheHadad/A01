@@ -73,13 +73,13 @@ public class SensorsDetector {
         if(System.currentTimeMillis() - timestampTilt > 700){
             timestampTilt = System.currentTimeMillis();
 
-            if(y<0){ //different values since its harder to move back
+            if(y<-2){ //different values since its harder to move back
                 if(sensorCallback != null){
                     sensorCallback.moveForw();
                 }
 
             }
-            if(y>6){
+            if(y>3){
                 if(sensorCallback != null){
                     sensorCallback.moveBack();
                 }

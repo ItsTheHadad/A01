@@ -59,6 +59,7 @@ public class GameOverActivity extends AppCompatActivity {
                 saveBtn.setVisibility(View.INVISIBLE);
 
                 //add the actual saving from the enterNameInput
+                //should move and save score + name + button/sensor , if button also fast or slow. and location
             }
         });
     }

@@ -294,12 +294,7 @@ public class MainActivity extends AppCompatActivity {
             public void moveBack() {
                 if(delay != FAST_MODE){
                     changeDelay(FAST_MODE);
-                    Toast.makeText(getApplicationContext(), "Fast Mode", Toast.LENGTH_SHORT).show();
-                    //update the delay?
-                }
-                else{
-                    Toast.makeText(getApplicationContext(), "Max Speed", Toast.LENGTH_SHORT).show();
-
+                    toast("Fast");
                 }
             }
 
@@ -307,11 +302,7 @@ public class MainActivity extends AppCompatActivity {
             public void moveForw() {
                 if(delay != SLOW_MODE){
                     changeDelay(SLOW_MODE);
-                    Toast.makeText(getApplicationContext(), "Slow Mode", Toast.LENGTH_SHORT).show();
-                    //update the delay?
-                }
-                else{
-                    Toast.makeText(getApplicationContext(), "Min Speed", Toast.LENGTH_SHORT).show();
+                    toast("Slow");
                 }
             }
         });
