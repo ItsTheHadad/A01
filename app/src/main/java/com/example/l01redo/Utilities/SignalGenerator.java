@@ -11,18 +11,23 @@ import com.example.l01redo.R;
 
 public class SignalGenerator {
 
-   private static Vibrator v;
-
-   private static MediaPlayer mediaPlayerWubba;
-
    private static SignalGenerator instance = null;
-   private Context c;
+   private Context context;
+   private static Vibrator v;
+   private static MediaPlayer mediaPlayerWubba;
+   private SignalGenerator(Context context){
+      this.context = context;
+   }
+   public static void initSG(Context context){
+      if(instance == null){
+         instance = new SignalGenerator(context);
+         v = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
+         mediaPlayerWubba = MediaPlayer.create(context,R.raw.wubba);
+      }
+   }
 
    public static SignalGenerator getInstance(){
       return instance;
-   }
-   public SignalGenerator(Context con){
-      this.c = con;
    }
 
    public void vibrate(){
@@ -36,16 +41,9 @@ public class SignalGenerator {
    }
 
    public void toast(String s) {
-      Toast.makeText(c, s, Toast.LENGTH_SHORT).show();
+      Toast.makeText(context, s, Toast.LENGTH_SHORT).show();
    }
 
-   public static void initSG(Context con){
-      if(instance == null){
-         instance = new SignalGenerator(con);
-      }
-      v = (Vibrator) con.getSystemService(Context.VIBRATOR_SERVICE);
-      mediaPlayerWubba = MediaPlayer.create(con,R.raw.wubba);
-   }
 
    public MediaPlayer getCrashSound() {
       return mediaPlayerWubba;

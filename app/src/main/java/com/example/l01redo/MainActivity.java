@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
 
     private SensorsDetector sensorsDetector; //dont forget to stop sensor on next activity
 
-    private SignalGenerator signalGenerator;
     public static final String LEVEL= "LEVEL";
 
     public static final String BUTTON = "BUTTON";
@@ -42,6 +41,18 @@ public class MainActivity extends AppCompatActivity {
     boolean isButton;
     boolean isFast;
 
+    boolean isPaused;
+
+    private  final Handler h = new Handler();
+    private Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            h.postDelayed(this,delay);
+            oneStep();
+        }
+    };
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,28 +62,56 @@ public class MainActivity extends AppCompatActivity {
         setFast(prevIntent.getBooleanExtra(LEVEL,false));
         setButton(prevIntent.getBooleanExtra(BUTTON, false));
 
-        signalGenerator.initSG(this); // have to come first
-        signalGenerator = SignalGenerator.getInstance();
+        gameLogic = new GameLogic();
 
         findViews();
 
-        gameLogic = new GameLogic();
         matrixStart();
         initControls();
         initSettings(getIsButton());
-        oneStep();
+        startRunnable();
 
 
     }
 
+
+    public void oneStep(){
+        gameLogic.oneStepOnion();
+        if(gameLogic.onionInSalad){
+            signalOnHit();
+            gameLogic.onionInSalad = false;
+        }
+        gameLogic.changeScore(1);
+        refreshUi();
+        checkGameOver();
+    }
+
+    private void checkGameOver(){
+        if(gameLogic.isGameOver()){
+            doGameOver();
+        }
+    }
+
+    private void stopRunnable(){
+        h.removeCallbacks(runnable);
+    }
+    private void startRunnable(){
+        h.postDelayed(runnable,2000);
+    }
     protected void onResume() { //@@not working
         super.onResume();
-        if(!isButton)
-            sensorsDetector.start();
+        if(isPaused){
+            h.postDelayed(runnable,delay+1000);
+            if(!isButton)
+                sensorsDetector.start();
+            isPaused = false;
+        }
     }
     @Override
-    protected void onPause() { //@@ not working
+    protected void onPause() {
         super.onPause();
+        isPaused = true; //legit?
+        stopRunnable();
         sensorsDetector.stop();
     }
 
@@ -82,6 +121,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initSettings(boolean isButton){
+        isPaused = false;
         if(isButton){
             for(int i = 0; i <fabArr.length; i++){
                 fabArr[i].setVisibility(View.VISIBLE);
@@ -173,6 +213,7 @@ public class MainActivity extends AppCompatActivity {
         inGameScore = findViewById(R.id.main_TXT_score);
 
     }
+
     public void playerDirections(){
 
         for (FloatingActionButton btn: fabArr) {
@@ -198,33 +239,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void oneStep(){
-        Handler h = new Handler();
-        Runnable runnable = new Runnable() {
-            @Override
-            public void run() {
-                gameLogic.oneStepOnion();
-                if(gameLogic.onionInSalad){
-                    signalOnHit();
-                    gameLogic.onionInSalad = false;
-                }
-                gameLogic.changeScore(1);
-                refreshUi();
-                h.postDelayed(this,delay);
-
-                if(gameLogic.isGameOver()){
-                    h.removeCallbacks(this); // stop program so it wont be updated
-                    doGameOver(); // stop sensor + move activity
-                }
-            }
-
-
-        };
-
-        h.post(runnable);
-    }
 
     public void doGameOver(){
+        stopRunnable();
         sensorsDetector.stop(); // stop sensor
         moveToGOActivity();
     }
@@ -259,7 +276,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void playCrashSound(){
-        signalGenerator.getCrashSound().start();
+        SignalGenerator.getInstance().getCrashSound().start();
     }
 
 
@@ -270,10 +287,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void vibrate(){
-        signalGenerator.vibrate();
+        SignalGenerator.getInstance().vibrate();
     }
     public void toast(String str){
-        signalGenerator.toast(str);
+        SignalGenerator.getInstance().toast(str);
     }
 
     private void initSensorDetection(){
