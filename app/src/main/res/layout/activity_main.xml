@@ -8,7 +8,15 @@
     tools:context=".MainActivity">
 <!-- change background to a picture -->
 
-<!--    hearts-->
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/main_IMG_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.7"
+        />
+
+
+    <!--    hearts-->
 
     <LinearLayout
         android:id="@+id/heartsCounter"
@@ -106,7 +114,7 @@
             android:src="@drawable/ic_icon_onion"
             android:layout_column="0"
             android:layout_row="0"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -118,7 +126,7 @@
             android:src="@drawable/ic_icon_tuna"
             android:layout_column="0"
             android:layout_row="0"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -130,7 +138,7 @@
             android:src="@drawable/ic_icon_onion"
             android:layout_column="1"
             android:layout_row="0"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -142,7 +150,7 @@
             android:src="@drawable/ic_icon_tuna"
             android:layout_column="1"
             android:layout_row="0"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -154,7 +162,7 @@
             android:src="@drawable/ic_icon_onion"
             android:layout_column="2"
             android:layout_row="0"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -166,7 +174,7 @@
             android:src="@drawable/ic_icon_tuna"
             android:layout_column="2"
             android:layout_row="0"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -178,7 +186,7 @@
             android:src="@drawable/ic_icon_onion"
             android:layout_column="3"
             android:layout_row="0"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -190,7 +198,7 @@
             android:src="@drawable/ic_icon_tuna"
             android:layout_column="3"
             android:layout_row="0"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -202,7 +210,7 @@
             android:src="@drawable/ic_icon_onion"
             android:layout_column="4"
             android:layout_row="0"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -214,7 +222,7 @@
             android:src="@drawable/ic_icon_tuna"
             android:layout_column="4"
             android:layout_row="0"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
 
@@ -227,7 +235,7 @@
             android:src="@drawable/ic_icon_onion"
             android:layout_column="0"
             android:layout_row="1"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -239,7 +247,7 @@
             android:src="@drawable/ic_icon_tuna"
             android:layout_column="0"
             android:layout_row="1"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -251,7 +259,7 @@
             android:src="@drawable/ic_icon_onion"
             android:layout_column="1"
             android:layout_row="1"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -263,7 +271,7 @@
             android:src="@drawable/ic_icon_tuna"
             android:layout_column="1"
             android:layout_row="1"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -275,7 +283,7 @@
             android:src="@drawable/ic_icon_onion"
             android:layout_column="2"
             android:layout_row="1"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -287,7 +295,7 @@
             android:src="@drawable/ic_icon_tuna"
             android:layout_column="2"
             android:layout_row="1"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -299,7 +307,7 @@
             android:src="@drawable/ic_icon_onion"
             android:layout_column="3"
             android:layout_row="1"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -311,7 +319,7 @@
             android:src="@drawable/ic_icon_tuna"
             android:layout_column="3"
             android:layout_row="1"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -323,7 +331,7 @@
             android:src="@drawable/ic_icon_onion"
             android:layout_column="4"
             android:layout_row="1"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -335,7 +343,7 @@
             android:src="@drawable/ic_icon_tuna"
             android:layout_column="4"
             android:layout_row="1"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
 
@@ -348,7 +356,7 @@
             android:src="@drawable/ic_icon_onion"
             android:layout_column="0"
             android:layout_row="2"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -360,7 +368,7 @@
             android:src="@drawable/ic_icon_tuna"
             android:layout_column="0"
             android:layout_row="2"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -372,7 +380,7 @@
             android:src="@drawable/ic_icon_onion"
             android:layout_column="1"
             android:layout_row="2"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -384,7 +392,7 @@
             android:src="@drawable/ic_icon_tuna"
             android:layout_column="1"
             android:layout_row="2"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -396,7 +404,7 @@
             android:src="@drawable/ic_icon_onion"
             android:layout_column="2"
             android:layout_row="2"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -408,7 +416,7 @@
             android:src="@drawable/ic_icon_tuna"
             android:layout_column="2"
             android:layout_row="2"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -420,7 +428,7 @@
             android:src="@drawable/ic_icon_onion"
             android:layout_column="3"
             android:layout_row="2"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -432,7 +440,7 @@
             android:src="@drawable/ic_icon_tuna"
             android:layout_column="3"
             android:layout_row="2"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -444,7 +452,7 @@
             android:src="@drawable/ic_icon_onion"
             android:layout_column="4"
             android:layout_row="2"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -456,7 +464,7 @@
             android:src="@drawable/ic_icon_tuna"
             android:layout_column="4"
             android:layout_row="2"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -468,7 +476,7 @@
             android:src="@drawable/ic_icon_onion"
             android:layout_column="0"
             android:layout_row="3"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -480,7 +488,7 @@
             android:src="@drawable/ic_icon_tuna"
             android:layout_column="0"
             android:layout_row="3"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -492,7 +500,7 @@
             android:src="@drawable/ic_icon_onion"
             android:layout_column="1"
             android:layout_row="3"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -504,7 +512,7 @@
             android:src="@drawable/ic_icon_tuna"
             android:layout_column="1"
             android:layout_row="3"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -516,7 +524,7 @@
             android:src="@drawable/ic_icon_onion"
             android:layout_column="2"
             android:layout_row="3"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -528,7 +536,7 @@
             android:src="@drawable/ic_icon_tuna"
             android:layout_column="2"
             android:layout_row="3"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
 
@@ -541,7 +549,7 @@
             android:src="@drawable/ic_icon_onion"
             android:layout_column="3"
             android:layout_row="3"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -553,7 +561,7 @@
             android:src="@drawable/ic_icon_tuna"
             android:layout_column="3"
             android:layout_row="3"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -565,7 +573,7 @@
             android:src="@drawable/ic_icon_onion"
             android:layout_column="4"
             android:layout_row="3"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -577,7 +585,7 @@
             android:src="@drawable/ic_icon_tuna"
             android:layout_column="4"
             android:layout_row="3"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
 
@@ -590,7 +598,7 @@
             android:src="@drawable/ic_icon_onion"
             android:layout_column="0"
             android:layout_row="4"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -602,7 +610,7 @@
             android:src="@drawable/ic_icon_tuna"
             android:layout_column="0"
             android:layout_row="4"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -614,7 +622,7 @@
             android:src="@drawable/ic_icon_onion"
             android:layout_column="1"
             android:layout_row="4"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -626,7 +634,7 @@
             android:src="@drawable/ic_icon_tuna"
             android:layout_column="1"
             android:layout_row="4"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -638,7 +646,7 @@
             android:src="@drawable/ic_icon_onion"
             android:layout_column="2"
             android:layout_row="4"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -650,7 +658,7 @@
             android:src="@drawable/ic_icon_tuna"
             android:layout_column="2"
             android:layout_row="4"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -662,7 +670,7 @@
             android:src="@drawable/ic_icon_onion"
             android:layout_column="3"
             android:layout_row="4"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -674,7 +682,7 @@
             android:src="@drawable/ic_icon_tuna"
             android:layout_column="3"
             android:layout_row="4"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -686,7 +694,7 @@
             android:src="@drawable/ic_icon_onion"
             android:layout_column="4"
             android:layout_row="4"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -698,7 +706,7 @@
             android:src="@drawable/ic_icon_tuna"
             android:layout_column="4"
             android:layout_row="4"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
 
@@ -711,7 +719,7 @@
             android:src="@drawable/ic_icon_onion"
             android:layout_column="0"
             android:layout_row="5"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -723,7 +731,7 @@
             android:src="@drawable/ic_icon_tuna"
             android:layout_column="0"
             android:layout_row="5"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -735,7 +743,7 @@
             android:src="@drawable/ic_icon_onion"
             android:layout_column="1"
             android:layout_row="5"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -747,7 +755,7 @@
             android:src="@drawable/ic_icon_tuna"
             android:layout_column="1"
             android:layout_row="5"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -759,7 +767,7 @@
             android:src="@drawable/ic_icon_onion"
             android:layout_column="2"
             android:layout_row="5"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -771,7 +779,7 @@
             android:src="@drawable/ic_icon_tuna"
             android:layout_column="2"
             android:layout_row="5"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -783,7 +791,7 @@
             android:src="@drawable/ic_icon_onion"
             android:layout_column="3"
             android:layout_row="5"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -795,7 +803,7 @@
             android:src="@drawable/ic_icon_tuna"
             android:layout_column="3"
             android:layout_row="5"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -807,7 +815,7 @@
             android:src="@drawable/ic_icon_onion"
             android:layout_column="4"
             android:layout_row="5"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -819,7 +827,7 @@
             android:src="@drawable/ic_icon_tuna"
             android:layout_column="4"
             android:layout_row="5"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -831,7 +839,7 @@
             android:src="@drawable/ic_icon_onion"
             android:layout_column="0"
             android:layout_row="6"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -843,7 +851,7 @@
             android:src="@drawable/ic_icon_tuna"
             android:layout_column="0"
             android:layout_row="6"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -855,7 +863,7 @@
             android:src="@drawable/ic_icon_onion"
             android:layout_column="1"
             android:layout_row="6"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -867,7 +875,7 @@
             android:src="@drawable/ic_icon_tuna"
             android:layout_column="1"
             android:layout_row="6"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -879,7 +887,7 @@
             android:src="@drawable/ic_icon_onion"
             android:layout_column="2"
             android:layout_row="6"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -891,7 +899,7 @@
             android:src="@drawable/ic_icon_tuna"
             android:layout_column="2"
             android:layout_row="6"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -903,7 +911,7 @@
             android:src="@drawable/ic_icon_onion"
             android:layout_column="3"
             android:layout_row="6"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -915,7 +923,7 @@
             android:src="@drawable/ic_icon_tuna"
             android:layout_column="3"
             android:layout_row="6"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -927,7 +935,7 @@
             android:src="@drawable/ic_icon_onion"
             android:layout_column="4"
             android:layout_row="6"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
         <com.google.android.material.imageview.ShapeableImageView
@@ -939,7 +947,7 @@
             android:src="@drawable/ic_icon_tuna"
             android:layout_column="4"
             android:layout_row="6"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
 
@@ -952,7 +960,7 @@
             android:src="@drawable/ic_icon_salad"
             android:layout_column="0"
             android:layout_row="7"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="10dp"
             />
 
@@ -965,7 +973,7 @@
             android:src="@drawable/ic_icon_tuna"
             android:layout_column="0"
             android:layout_row="7"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
 
@@ -978,7 +986,7 @@
             android:src="@drawable/ic_icon_salad"
             android:layout_column="1"
             android:layout_row="7"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="10dp"
             />
 
@@ -991,7 +999,7 @@
             android:src="@drawable/ic_icon_tuna"
             android:layout_column="1"
             android:layout_row="7"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
 
@@ -1004,7 +1012,7 @@
             android:src="@drawable/ic_icon_salad"
             android:layout_column="2"
             android:layout_row="7"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="10dp"
             />
 
@@ -1017,7 +1025,7 @@
             android:src="@drawable/ic_icon_tuna"
             android:layout_column="2"
             android:layout_row="7"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
 
@@ -1030,7 +1038,7 @@
             android:src="@drawable/ic_icon_salad"
             android:layout_column="3"
             android:layout_row="7"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="10dp"
             />
 
@@ -1043,7 +1051,7 @@
             android:src="@drawable/ic_icon_tuna"
             android:layout_column="3"
             android:layout_row="7"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
 
@@ -1056,7 +1064,7 @@
             android:src="@drawable/ic_icon_salad"
             android:layout_column="4"
             android:layout_row="7"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="10dp"
             />
 
@@ -1069,7 +1077,7 @@
             android:src="@drawable/ic_icon_tuna"
             android:layout_column="4"
             android:layout_row="7"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:padding="25dp"
             />
 
@@ -1089,16 +1097,18 @@
 
     </View>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:contentDescription="going left"
-            android:id="@+id/main_FAB_left"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart = "true"
-            android:layout_alignParentBottom = "true"
-            android:layout_margin="16dp"
-            android:src="@drawable/baseline_arrow_circle_left_24"
-            />
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/main_FAB_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="going left"
+        android:src="@drawable/baseline_arrow_circle_left_24" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:contentDescription="going right"

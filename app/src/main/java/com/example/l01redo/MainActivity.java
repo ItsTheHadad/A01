@@ -1,12 +1,14 @@
 package com.example.l01redo;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatImageView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 
+import com.bumptech.glide.Glide;
 import com.example.l01redo.Interfaces.SensorCallback;
 import com.example.l01redo.Utilities.SensorsDetector;
 import com.example.l01redo.Utilities.SignalGenerator;
@@ -16,6 +18,7 @@ import com.google.android.material.textview.MaterialTextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    private AppCompatImageView main_IMG_background;
     ShapeableImageView[][] gridMatrix;
     ShapeableImageView[][] prizeMatrix;
     FloatingActionButton[] fabArr;
@@ -63,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         gameLogic = new GameLogic();
 
         findViews();
-
+        glideImpl();
         matrixStart();
         initControls();
         initSettings(getIsButton());
@@ -72,6 +75,15 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+    public void glideImpl(){
+        Glide
+                .with(this)
+                .load(R.drawable.ic_background_lettuce)
+                .centerCrop()
+                .placeholder(R.drawable.ic_launcher_background)
+                .into(main_IMG_background);
+    }
 
     public void oneStep(){
         gameLogic.oneStepOnion();
@@ -173,6 +185,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void findViews() {
+
+        main_IMG_background = findViewById(R.id.main_IMG_background);
 
         vomitArr = new ShapeableImageView[]{
                 findViewById(R.id.main_IMG_life1), findViewById(R.id.main_IMG_life2),
