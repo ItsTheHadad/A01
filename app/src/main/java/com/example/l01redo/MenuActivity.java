@@ -38,6 +38,7 @@ public class MenuActivity extends AppCompatActivity {
 
 
     public void startAllButtons(){
+        startBtn.setVisibility(View.INVISIBLE);
         buttonModeClick();
         sensorModeClick();
         startBtnClick();
@@ -88,6 +89,8 @@ public class MenuActivity extends AppCompatActivity {
                         setFast(true);
                         setButton(true);
                     }
+                    startBtn.setVisibility(View.VISIBLE);
+
                 }
             });
 
@@ -134,7 +137,6 @@ public class MenuActivity extends AppCompatActivity {
 
     private void moveToScoreBoardActivity(){
         Intent sbIntent = new Intent(this, ScoreBoardActivity.class);
-
         startActivity(sbIntent);
         finish();
     }

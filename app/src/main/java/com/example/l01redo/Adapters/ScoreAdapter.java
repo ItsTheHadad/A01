@@ -36,7 +36,6 @@ public class ScoreAdapter extends RecyclerView.Adapter<ScoreAdapter.ScoreViewHol
         Score score = getItem(position);
         holder.score_LBL_name.setText(score.getName());
         holder.score_LBL_score.setText(score.getScore()+"");
-        holder.score_LBL_mode.setText(score.getMode());
 
     }
 
@@ -53,14 +52,12 @@ public class ScoreAdapter extends RecyclerView.Adapter<ScoreAdapter.ScoreViewHol
 
         private MaterialTextView score_LBL_name;
         private MaterialTextView score_LBL_score;
-        private MaterialTextView score_LBL_mode;
 
         public ScoreViewHolder(@NonNull View itemView) {
             super(itemView);
 
             score_LBL_name = itemView.findViewById(R.id.sb_TXT_name);
             score_LBL_score = itemView.findViewById(R.id.sb_TXT_score);
-            score_LBL_mode = itemView.findViewById(R.id.sb_TXT_mode);
 
             itemView.setOnClickListener(v -> {
                 // add the location thingy

@@ -250,8 +250,6 @@ public class MainActivity extends AppCompatActivity {
         refreshUi();
     }
 
-
-
     public void doGameOver(){
         stopRunnable();
         sensorsDetector.stop(); // stop sensor
@@ -290,7 +288,6 @@ public class MainActivity extends AppCompatActivity {
     public void playCrashSound(){
         SignalGenerator.getInstance().getCrashSound().start();
     }
-
 
     public void signalOnHit(){
         playCrashSound();
@@ -355,8 +352,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void moveToGOActivity(){
         Intent GOIntent = new Intent(this, GameOverActivity.class);
-        GOIntent.putExtra(GameOverActivity.LEVEL,getIsFast()); // to know what difficulty the user was on
-        GOIntent.putExtra(GameOverActivity.BUTTON,getIsButton()); // to know if the user used btns or snsrs
         GOIntent.putExtra(GameOverActivity.SCORE,gameLogic.getScore()); // to know the score of the user
         startActivity(GOIntent);
         finish();

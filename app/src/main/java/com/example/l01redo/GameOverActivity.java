@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
 
+import com.example.l01redo.Models.Score;
+import com.example.l01redo.Utilities.SPutil;
+import com.example.l01redo.Utilities.ScoreDataManager;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textview.MaterialTextView;
@@ -20,16 +22,9 @@ public class GameOverActivity extends AppCompatActivity {
     MaterialButton scrBtn;
     MaterialButton menuBtn;
 
-    public static final String LEVEL= "LEVEL";
-
-    public static final String BUTTON = "BUTTON";
-
     public static final String SCORE = "SCORE";
-
-
-    private boolean isFast;
-    private boolean isButton;
     private int score;
+    private String name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +34,6 @@ public class GameOverActivity extends AppCompatActivity {
         initView();
 
         Intent prevIntent = getIntent();
-        setFast(prevIntent.getBooleanExtra(LEVEL,false));
-        setButton(prevIntent.getBooleanExtra(BUTTON, false));
         setScore(prevIntent.getIntExtra(SCORE,0));
 
         showScore();
@@ -52,14 +45,24 @@ public class GameOverActivity extends AppCompatActivity {
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                menuBtn.setVisibility(View.VISIBLE);
-                scrBtn.setVisibility(View.VISIBLE);
-                nameTxt.setText("Score Saved");
-                enterNameInput.setVisibility(View.INVISIBLE);
-                saveBtn.setVisibility(View.INVISIBLE);
+                String tempName = enterNameInput.getText().toString();
+                if(!tempName.isEmpty()){
 
-                //add the actual saving from the enterNameInput
-                //should move and save score + name + button/sensor , if button also fast or slow. and location
+                    setName(tempName);
+                    setScore(Integer.parseInt(scoreChangingTxt.getText().toString()));
+
+                    addScore();
+
+                    menuBtn.setVisibility(View.VISIBLE);
+                    scrBtn.setVisibility(View.VISIBLE);
+                    nameTxt.setText("Score Saved "+getName());
+                    enterNameInput.setVisibility(View.INVISIBLE);
+                    saveBtn.setVisibility(View.INVISIBLE);
+
+                }
+                else{
+                    //red notification;
+                }
             }
         });
     }
@@ -79,6 +82,14 @@ public class GameOverActivity extends AppCompatActivity {
         });
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public void initView(){
         findViews();
         menuBtn.setVisibility(View.INVISIBLE);
@@ -86,22 +97,6 @@ public class GameOverActivity extends AppCompatActivity {
         saveBtnClick();
         menuBtnClick();
         scoreBtnClick();
-    }
-
-    public boolean isFast() {
-        return isFast;
-    }
-
-    public void setFast(boolean fast) {
-        isFast = fast;
-    }
-
-    public boolean isButton() {
-        return isButton;
-    }
-
-    public void setButton(boolean button) {
-        isButton = button;
     }
 
     public int getScore() {
@@ -135,6 +130,13 @@ public class GameOverActivity extends AppCompatActivity {
         Intent menuIntent = new Intent(this, MenuActivity.class);
         startActivity(menuIntent);
         finish();
+    }
+
+    public void addScore(){
+        Score newScore = new Score().setScore(score).setName(name);
+
+        ScoreDataManager.getInstance().addScore(newScore);
+        ScoreDataManager.getInstance().saveSP();
     }
 
 }
