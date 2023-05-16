@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/blue_200"
-    tools:context=".MainActivity">
+    tools:context=".ActivitiesAndLogic.MainActivity">
 <!-- change background to a picture -->
 
     <androidx.appcompat.widget.AppCompatImageView

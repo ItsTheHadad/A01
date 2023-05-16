@@ -11,14 +11,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.l01redo.Adapters.ScoreAdapter;
+import com.example.l01redo.Interfaces.MapCallback;
+import com.example.l01redo.Interfaces.ScoreCallback;
 import com.example.l01redo.Models.Score;
 import com.example.l01redo.R;
-import com.example.l01redo.Utilities.SPutil;
 import com.example.l01redo.Utilities.ScoreDataManager;
 
 public class ScoreboardFragment extends Fragment {
 
-
+    private MapCallback mapCallback;
     private RecyclerView scoreLst;
 
     @Override
@@ -36,7 +37,18 @@ public class ScoreboardFragment extends Fragment {
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
         scoreLst.setLayoutManager(linearLayoutManager); // wont work without that
         scoreLst.setAdapter(scoreAdapter);
+        scoreAdapter.setScoreCallback(new ScoreCallback() {
+            @Override
+            public void deliverScore(Score score) {
+                mapCallback.goTo(score.getLatitude(),score.getLongitude());
+            }
+        });
 
+
+    }
+
+    public void setMapCallback(MapCallback mapCallback) {
+        this.mapCallback = mapCallback;
     }
 
     private void findView(View view){

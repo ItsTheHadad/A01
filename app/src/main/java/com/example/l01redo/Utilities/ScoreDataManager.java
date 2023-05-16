@@ -8,7 +8,9 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 
 public class ScoreDataManager {
 
@@ -38,9 +40,10 @@ public class ScoreDataManager {
             scores.getScores().sort(new Comparator<Score>() {
                 @Override
                 public int compare(Score o1, Score o2) {
-                    return o1.getScore() - o2.getScore();
+                    return o2.getScore() - o1.getScore();
                 }
             });
+
         if (scores.getScores().size() > 10) {
             scores.getScores().remove(10);
         }

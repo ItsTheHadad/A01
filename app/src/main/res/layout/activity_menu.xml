@@ -5,10 +5,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/yellow_300"
-    tools:context=".MenuActivity">
+    tools:context=".ActivitiesAndLogic.MenuActivity">
+
+    <LinearLayout
+        android:id="@+id/menu_nameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true"
+        >
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/menu_LBL_gameName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="YEEyeyeyeYA"
+            android:textSize="100sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginTop="170dp"
+            android:textColor="@color/black"
+
+            >
+
+        </com.google.android.material.textview.MaterialTextView>
 
 
+    </LinearLayout>
 
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/menu_IMG_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.5"
+        />
 
     <LinearLayout
         android:id="@+id/menu_LO_buttons"

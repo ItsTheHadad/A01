@@ -1,4 +1,4 @@
-package com.example.l01redo;
+package com.example.l01redo.ActivitiesAndLogic;
 
 public class GameLogic {
 

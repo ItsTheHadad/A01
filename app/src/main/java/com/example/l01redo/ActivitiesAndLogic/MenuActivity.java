@@ -1,19 +1,22 @@
-package com.example.l01redo;
+package com.example.l01redo.ActivitiesAndLogic;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatImageView;
 
+import com.bumptech.glide.Glide;
+import com.example.l01redo.R;
 import com.google.android.material.button.MaterialButton;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import java.nio.file.Files;
+import com.google.android.material.textview.MaterialTextView;
 
 public class MenuActivity extends AppCompatActivity {
 
+    private AppCompatImageView menu_IMG_background;
+
+    MaterialTextView appName;
     MaterialButton[] buttonModeArrBtn;
     MaterialButton sensorModeBtn;
     MaterialButton startBtn;
@@ -27,8 +30,8 @@ public class MenuActivity extends AppCompatActivity {
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-
         findViews();
+        glideImpl();
         setButton(true);//default
         setFast(false);//default
 
@@ -44,6 +47,15 @@ public class MenuActivity extends AppCompatActivity {
         startBtnClick();
         scoreBtnClick();
 
+    }
+
+    public void glideImpl(){
+        Glide
+                .with(this)
+                .load(R.drawable.ic_background_tomato)
+                .centerCrop()
+                .placeholder(R.drawable.ic_launcher_background)
+                .into(menu_IMG_background);
     }
 
     public boolean getIsFast() {
@@ -63,6 +75,10 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     private void findViews(){
+        appName = findViewById(R.id.menu_LBL_gameName);
+
+        menu_IMG_background = findViewById(R.id.menu_IMG_background);
+
         buttonModeArrBtn = new MaterialButton[]{
                 findViewById(R.id.menu_BTN_slow), findViewById(R.id.menu_BTN_fast)
         };
@@ -105,6 +121,8 @@ public class MenuActivity extends AppCompatActivity {
             public void onClick(View v) {
                 setFast(false);
                 setButton(false);
+
+                startBtn.setVisibility(View.VISIBLE);
             }
         });
     }

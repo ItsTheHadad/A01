@@ -1,4 +1,4 @@
-package com.example.l01redo;
+package com.example.l01redo.ActivitiesAndLogic;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
@@ -10,6 +10,7 @@ import android.view.View;
 
 import com.bumptech.glide.Glide;
 import com.example.l01redo.Interfaces.SensorCallback;
+import com.example.l01redo.R;
 import com.example.l01redo.Utilities.SensorsDetector;
 import com.example.l01redo.Utilities.SignalGenerator;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -29,15 +30,15 @@ public class MainActivity extends AppCompatActivity {
 
     private GameLogic gameLogic;
 
-    private SensorsDetector sensorsDetector; //dont forget to stop sensor on next activity
+    private SensorsDetector sensorsDetector;
 
     public static final String LEVEL= "LEVEL";
 
     public static final String BUTTON = "BUTTON";
 
 
-    private final int FAST_MODE = 800 ;
-    private final int SLOW_MODE = 1300;
+    private final int FAST_MODE = 500 ;
+    private final int SLOW_MODE = 800;
     private int delay;
     boolean isButton;
     boolean isFast;

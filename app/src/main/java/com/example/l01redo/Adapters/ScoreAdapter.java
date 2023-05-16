@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.l01redo.Interfaces.ScoreCallback;
 import com.example.l01redo.Models.Score;
 import com.example.l01redo.R;
 import com.google.android.material.textview.MaterialTextView;
@@ -16,6 +17,16 @@ import java.util.ArrayList;
 public class ScoreAdapter extends RecyclerView.Adapter<ScoreAdapter.ScoreViewHolder> {
 
     private ArrayList<Score> scores;
+
+    private ScoreCallback scoreCallback;
+
+    public void setScoreCallback(ScoreCallback scoreCallback) {
+        this.scoreCallback = scoreCallback;
+    }
+
+    public ScoreCallback getScoreCallback() {
+        return scoreCallback;
+    }
 
     public ScoreAdapter(ArrayList<Score> scores){
         this.scores = scores;
@@ -60,7 +71,8 @@ public class ScoreAdapter extends RecyclerView.Adapter<ScoreAdapter.ScoreViewHol
             score_LBL_score = itemView.findViewById(R.id.sb_TXT_score);
 
             itemView.setOnClickListener(v -> {
-                // add the location thingy
+                if (scoreCallback != null)
+                    scoreCallback.deliverScore(getItem(getAdapterPosition()));
             });
 
         }
