@@ -63,6 +63,7 @@ public class SPutil {
     public void putObject(String key, Object value) {
         Log.d("Scores Saved", "getArrayList: "+ value);
         putString(key, new Gson().toJson(value));
+
     }
 
 
