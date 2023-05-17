@@ -33,7 +33,9 @@ public class Mutil implements LocationListener {
                     MY_PERMISSIONS_REQUEST_LOCATION
             );
         }
-        locationManager.requestLocationUpdates(GPS_PROVIDER,0,0,this);
+        else{
+            locationManager.requestLocationUpdates(GPS_PROVIDER,0,0,this);
+        }
     }
 
 
@@ -43,7 +45,14 @@ public class Mutil implements LocationListener {
             if (location != null)
                 onLocationChanged(location);
         }
+        else {
+            Location defaultLocation = new Location(GPS_PROVIDER);
+            defaultLocation.setLatitude(latitude);
+            defaultLocation.setLongitude(longitude);
+            onLocationChanged(defaultLocation);
+        }
     }
+
 
 
     @Override
